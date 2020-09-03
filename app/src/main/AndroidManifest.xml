@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mc_masterchemistry">
+
+    <application
+        android:name=".commun.MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".UI.TutorialActivity"></activity>
+        <activity android:name=".UI.MejorPuntuacionActivity" />
+        <activity android:name=".UI.EleccionBinarioTerciarios" />
+        <activity android:name=".UI.terciarios.clasificacion_terciarios" />
+        <activity android:name=".UI.terciarios.tablero_terciarios" />
+        <activity android:name=".UI.formulacion.ExplicacionCompuestos" />
+        <activity android:name=".UI.tablero.ActivityClasificacion" />
+        <activity
+            android:name=".UI.tablero.Tablero"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".UI.tablaPeriodica" />
+        <activity android:name=".UI.eleccionJuego" />
+        <activity android:name=".UI.formulacion.formulacion" />
+        <activity android:name=".UI.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

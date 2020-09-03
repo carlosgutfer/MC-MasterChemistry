@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/w"
+    tools:context=".UI.tablaPeriodica">
+
+    <ImageButton
+        android:id="@+id/IB_NM2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/IB_NM1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_NM4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/IB_NM3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_NM1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/TV_NoMetal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_NM3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/IB_NM2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_m3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
+        android:visibility="invisible"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/IB_m2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_m2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
+        android:visibility="invisible"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/IB_m1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/bt_Fe"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/hierro"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="252dp"
+            tools:layout_editor_absoluteY="69dp" />
+
+        <Button
+            android:id="@+id/bt_Co"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/cobalto"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/bt_Ni"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/Niquel"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_Cu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/cobre"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="269dp"
+            tools:layout_editor_absoluteY="305dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <Button
+            android:id="@+id/bt_Pt"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/platino"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_Au"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/Oro"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_Hg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/mercurio"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_talio"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#cac9f3"
+            android:text="@string/talio"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/bt_Pd"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/checkbox_off_background"
+            android:backgroundTint="#a7c2dc"
+            android:text="@string/Paladio"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_disable_only_material_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="98dp"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+
+                android:id="@+id/bt_P"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#d7f4d7"
+                android:text="@string/fosforo"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_S"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#d7f4d7"
+                android:text="@string/azufre"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_Cl"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#B3F388"
+                android:text="@string/cloro"
+                android:textAllCaps="false"
+                android:textColor="#2B9824"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/bt_As"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#f1cdf3"
+                android:text="@string/arsenico"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_text_disable_only_material_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_Se"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#d7f4d7"
+                android:text="@string/selenio"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_Br"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#B3F388"
+                android:text="@string/bromo"
+                android:textAllCaps="false"
+                android:textColor="@color/RojoGas"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/bt_Sb"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#f1cdf3"
+                android:text="@string/antimonio"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_Te"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#f1cdf3"
+                android:text="@string/teluro"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bt_I"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:drawable/checkbox_off_background"
+                android:backgroundTint="#B3F388"
+
+                android:text="@string/iodo"
+                android:textColor="@android:color/background_dark"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/bt_Sn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:background="@android:drawable/checkbox_off_background"
+        android:backgroundTint="#cac9f3"
+        android:text="@string/estaño"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_text_disable_only_material_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/bt_At"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:background="@android:drawable/checkbox_off_background"
+        android:backgroundTint="#B3F388"
+
+        android:text="@string/Astato"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <TextView
+        android:id="@+id/TV_metal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="244dp"
+        android:text="@string/nombreMetal"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_NoMetal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/NoMetal"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_metal" />
+
+    <ImageButton
+        android:id="@+id/IB_m1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/TV_metal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IB_m4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
+        android:visibility="invisible"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/IB_m3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IV_eleccion2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="464dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/IV_eleccion3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IV_eleccion3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:visibility="invisible"
+        android:background="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IV_eleccion1"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IV_eleccion1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="464dp"
+        android:background="@null"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/IV_eleccion2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/IV_eleccion4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:visibility="invisible"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/IV_eleccion3"
+        app:layout_constraintTop_toBottomOf="@+id/IV_eleccion2"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="430dp"
+        android:text="@string/NOelegidos"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_jugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="524dp"
+        android:background="@null"
+        android:text="@string/Jugar"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/IV_eleccion2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

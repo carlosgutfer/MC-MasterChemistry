@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/z"
+    tools:context=".UI.terciarios.clasificacion_terciarios">
+
+    <RadioGroup
+        android:id="@+id/RG_elecciones"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_CompuestosClasificar">
+
+        <RadioButton
+            android:id="@+id/RB_Hidruros"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMarkInverse"
+            android:text="@string/HidrurosMetalicos"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="446dp" />
+
+        <RadioButton
+            android:id="@+id/RB_HidrurosNoMetal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMarkInverse"
+            android:text="@string/HidrurosNoMetalicos"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="446dp" />
+
+        <RadioButton
+            android:id="@+id/RB_acidos"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/AcidoHidracido"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RadioButton
+            android:id="@+id/RB_Halogenuro"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/Halogenurodeoxígeno"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_OxidoNoMetal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/OxidoDeNoMetal"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_OxidoMetal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/OxidoDeMetal"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_SalNeutra"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/SalNeutraBinaria"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_oxoacidos"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/oxoacidos"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_hidroxidos"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/hidroxidos"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/RB_oxosales"
+            android:layout_width="327dp"
+            android:layout_height="31dp"
+            android:layout_margin="0dp"
+            android:button="?android:attr/textCheckMark"
+            android:text="@string/oxosales"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/puntos"
+        android:textColor="@color/text_color_primary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/TV_GemasFin"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_CompuestosClasificar"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:text="@string/compuesto"
+        android:textColor="@color/text_color_primary"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <Button
+        android:id="@+id/Btn_comprobar"
+        android:layout_width="150dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="428dp"
+        android:layout_marginLeft="428dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/zz"
+        android:onClick="onClick"
+        android:text="@string/comprobar"
+        android:textColor="@color/text_color_primary"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_GemasFin" />
+
+    <TextView
+        android:id="@+id/TV_GemasFin"
+        android:layout_width="81dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/gemas"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

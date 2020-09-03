@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/v"
+    tools:context=".UI.eleccionJuego">
+
+    <Button
+        android:id="@+id/Bt_aleatorio"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginLeft="237dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginRight="237dp"
+        android:background="@drawable/button_border_reglas"
+        android:text="@string/aleatorio"
+        android:textColor="@color/primary_text_disable_only_material_dark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bt_personalizado"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginLeft="237dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginRight="237dp"
+        android:background="@drawable/button_border_formulacion"
+        android:text="@string/personalizado"
+        android:textColor="@color/primary_text_disable_only_material_dark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_aleatorio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Master Chemistry</string>
+    <string name="Jugar">jugar</string>
+    <string name="reglas">reglas</string>
+    <string name="Formulacion">formulacion</string>
+    <string name="salir">salir</string>
+    <string name="personalizado">personalizado</string>
+    <string name="aleatorio">aleatorio</string>
+    <string name="hierro">Fe</string>
+    <string name="cobalto">Co</string>
+    <string name="Niquel">Ni</string>
+    <string name="cobre">Cu</string>
+    <string name="Paladio">Pd</string>
+    <string name="platino">Pt</string>
+    <string name="Oro">Au</string>
+    <string name="mercurio">Hg</string>
+    <string name="talio">Tl</string>
+    <string name="estaño">Sn</string>
+    <string name="fosforo">P</string>
+    <string name="azufre">s</string>
+    <string name="cloro">Cl</string>
+    <string name="arsenico">As</string>
+    <string name="selenio">Se</string>
+    <string name="bromo">Br</string>
+    <string name="antimonio">Sb</string>
+    <string name="teluro">Te</string>
+    <string name="iodo">I</string>
+    <string name="Astato">At</string>
+    <string name="nombreMetal">Metal</string>
+    <string name="NoMetal"> NoMetal</string>
+    <string name="NOelegidos">Numeros de oxidación elegidos</string>
+    <string name="puntos">Gemas</string>
+    <string name="fusion">fusión</string>
+    <string name="limpiar">limpiar</string>
+    <string name="barajar">Descartar</string>
+    <string name="Compuestoscreados">Compuestos </string>
+    <string name="Elemento">Elemento</string>
+    <string name="comprobar">Comprobar</string>
+    <string name="compuesto">Compuesto</string>
+    <string name="dos">₂</string>
+    <string name="Nsub"><sub> n </sub></string>
+    <string name="tres">₃</string>
+    <string name="cuatro">₄</string>
+    <string name="HidrurosMetalicos">Hidruros metálicos</string>
+    <string name="AcidoHidracido">Ácido hidrácido</string>
+    <string name="Halogenurodeoxígeno">Halogenuro de oxígeno</string>
+    <string name="SalNeutraBinaria">Sal neutra binaria</string>
+    <string name="OxidoDeNoMetal">Óxido de no metal</string>
+    <string name="OxidoDeMetal">Óxido de metal</string>
+    <string name="HidrurosNoMetalicos">Hidruros no metálicos</string>
+    <string name="Titulo">Titulo</string>
+    <string name="peroxido">Peróxidos</string>
+    <string name="Peroxido">Peróxido</string>
+    <string name="TDCompuestos">Tipos de compuestos</string>
+    <string name="reto">Reto</string>
+    <string name="volver">VOLVER</string>
+    <string name="oxoacidos">Oxoácidos</string>
+    <string name="hidroxidos">Hidróxidos</string>
+    <string name="oxosales">Oxosales</string>
+    <string name="CompuestosBinarios">Compuestos binarios</string>
+    <string name="compuestosBiyTer">Compuestos binarios y terciarios</string>
+    <string name="Terciarios">Compuestor terciarios</string>
+    <string name="nuevoelementos">Nuevos elementos</string>
+    <string name="Tutorial">Tutorial</string>
+    <string name="Records">mejor puntuación</string>
+    <string name="sinRegistro">No hay ningún registro de gemas todavía</string>
+    <string name="segundoPaso">" Si eliges la opción personalizada, elige un metal  y un no metal de los elementos disponibles en la tabla periódica. Recuerda que podrás además elegir el número de oxidación cuando tengan más de dos.
+                                \nSi te equivocas al seleccionar, pulsa el boton limpiar o si prefieres pulsa a descartar para que vuelvan a salir otros átomos de Oxígeno e Hidrógeno, pero recuerda que el número de estos son limitados"</string>
+    <string name="primerPaso"> Elige el modo de juego que más te guste</string>
+    <string name="tercerPaso">" Pulsa en los elementos que desees para crear compuestos electricamente neutros. Escribe su formula en el recuadro de compuestos y pulsa a fusionar. Puedes revisar los compuestos  en el apartado tipos de compuestos del menu principal. "</string>
+    <string name="pasoCuarto">Pulsando sobre el átomo veras los compuestos creados para no repetirlos y sobre la gema el número de que llevas creadas.</string>
+    <string name="pasoQuinto">Si pulsas el boton peróxidos, elige un metal  y dos oxígenos. Escribe el compuesto y dale a fusionar.</string>
+    <string name="pasoSexto">"Cuando seleccionas el boton reto,se mostrará un desafío por pantalla que si es resuelto otorga numerosas gemas. "</string>
+    <string name="TiposRetos">Existen cinco retos:
+                                \n1º Comodín. Escribe el elemnto que deseas (de la lista que aparece por pantalla) en la zona de compuestos, selecciona los hidrogenos y/o oxígenso hasta que la suma de estos con el elemento qeu has escrito sea neutra y dale a fusionar (recuerda que el NO de tu elemento para la suma neutra debbe ser valido).
+                                \n2º Sales ternaria. Escribe en la zona de compuestos tu nuevo compuesto que se forma al sumar una molécula de agua a un Oxido de metal o no metal que ya hayas creado y dale a fusionar.
+                                \n3º Todos. Utiliza los cuatro elementos de hidrógeno y/o oxígeno que esten en pantalla.
+                                \n4º Sal neutra binaria. Escribe en la zona de compuestos uno nuevo sustituyendo el H+ combinado con un no metal por Au+ y dale a fusionar.
+                                \n5º Duplicado. el elemento seleccionado se duplica y dispones de uno más a la hora de crear un compuesto.
+                                \n</string>
+    <string name="pasoSeptimo">"Por último elige la opción correcta de la lista de tipos de compuestos y dale a comprobar. Perderas una gema por cada error y ganaras una por cada acierto. "</string>
+
+
+</resources>

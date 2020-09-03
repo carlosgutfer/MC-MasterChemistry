@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#CCFF8F00</color>
+    <color name="text_color_primary">#000000</color>
+    <color name="primary_text_disable_only_material_dark" >#000000</color>
+    <color name="colorPrimaryDark">#c67100</color>
+    <color name="colorAccent">#c67100</color>
+    <color name="VerdeMetal">#BDECB6</color>
+    <color name="AmarilloMetal">#FFFF00</color>
+
+    <color name="MoradoNoMetal">#f1cdf3</color>
+    <color name="VerdeAzuladoNoMetal">#d7f4d7</color>
+    <color name="VerdeNoMetal">#B3F388</color>
+    <color name ="azulmoradoMetal">#cac9f3</color>
+    <color name="azulmetal">#a7c2dc</color>
+
+    <color name="RojoGas">#EF0B0B</color>
+    <color name="verdeLiquido">#55E705</color>
+    <color name="negro">#000000</color>
+
+</resources>
