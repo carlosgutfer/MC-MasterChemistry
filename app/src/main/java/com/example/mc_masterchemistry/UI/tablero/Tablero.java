@@ -89,10 +89,10 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int width = metrics.widthPixels; // ancho absoluto en pixels
         int height = metrics.heightPixels; // alto absoluto en pixels
-        if (height>1280) {
-            setContentView(R.layout.tablero_activity);
-        }else{
+        if (height<=1280&&width<=768) {
             setContentView(R.layout.tablero_pequeno_activity);
+        }else{
+            setContentView(R.layout.tablero_activity);
         }
 
         if (savedInstanceState == null) {
@@ -180,7 +180,43 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             super.onSaveInstanceState(outState);
             outState.putIntArray("eleccion",Ids);
             outState.putIntArray("NumerosOxi",NumerosOxi);
+            outState.putIntegerArrayList("ListE1NO1",ListE1NO1);
+            outState.putIntegerArrayList("ListE1NO2",ListE1NO2);
+            outState.putIntegerArrayList("ListE2NO1",ListE2NO1);
+            outState.putIntegerArrayList("ListE2NO2",ListE2NO2);
+            outState.putInt("BiTer",BiTer);
+            outState.putStringArrayList("CompuestosCreados", elementosCreados);
+            outState.putInt("gemasCreadas",gemasFin);
+            outState.putIntegerArrayList("IdsCompuestosCreados",idsCompuestosCreados);
+            outState.putIntegerArrayList("controlPeroxidos",listPeroxidos);
+
         }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        Ids=savedInstanceState.getIntArray("eleccion");
+        NumerosOxi=savedInstanceState.getIntArray("NumerosOxi");
+        ListE1NO1=savedInstanceState.getIntegerArrayList("ListE1NO1");
+        ListE1NO2=savedInstanceState.getIntegerArrayList("ListE1NO2");
+        ListE2NO1=savedInstanceState.getIntegerArrayList("ListE2NO1");
+        ListE2NO2=savedInstanceState.getIntegerArrayList("ListE2NO2");
+        BiTer=savedInstanceState.getInt("BiTer");
+        elementosCreados=savedInstanceState.getStringArrayList("CompuestosCreados");
+        gemasFin=savedInstanceState.getInt("gemasCreadas");
+        idsCompuestosCreados=savedInstanceState.getIntegerArrayList("IdsCompuestosCreados");
+        listPeroxidos=savedInstanceState.getIntegerArrayList("controlPeroxidos");
+
+        E1NO1.setImageResource(NumerosOxi[4]);
+        E1NO2.setImageResource(NumerosOxi[5]);
+        E2NO1.setImageResource(NumerosOxi[6]);
+        E2NO2.setImageResource(NumerosOxi[7]);
+
+        IVgemas.setText(String.valueOf(gemasFin));
+        listaElementos.setText(mostrarElementos());
+    }
+
         private void setelementos(List<ElementoEntity> items) {
         this.allElementos=items;
         crearBaraja(allElementos);
