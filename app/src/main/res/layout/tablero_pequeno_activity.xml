@@ -9,8 +9,8 @@
     tools:context=".UI.tablero.Tablero" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="259dp"
-        android:layout_height="432dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/x"
         android:fitsSystemWindows="true">
 
@@ -59,9 +59,10 @@
             app:layout_constraintTop_toBottomOf="@+id/TVnombreM" />
 
         <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
             app:layout_constraintStart_toStartOf="@+id/linearLayout3"
@@ -148,12 +149,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
             <ImageButton
                 android:id="@+id/IV_fin1"
@@ -188,7 +188,7 @@
             android:id="@+id/tableLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -336,8 +336,8 @@
             android:id="@+id/IV_gemas"
             android:layout_width="65dp"
             android:layout_height="71dp"
-            android:layout_marginStart="320dp"
-            android:layout_marginLeft="320dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="300dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/gemas"
             android:foregroundGravity="center"

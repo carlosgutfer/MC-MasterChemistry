@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".UI.tablero.Tablero" >
+    tools:context=".UI.terciarios.tablero_terciarios">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="259dp"
-        android:layout_height="432dp"
-        android:background="@drawable/x"
-        android:fitsSystemWindows="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/x">
 
 
         <ImageButton
@@ -23,7 +22,6 @@
             android:layout_marginLeft="44dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/atomo"
-            android:onClick="onClick"
             android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,12 +32,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="112dp"
             android:text="@string/nombreMetal"
             android:textColor="@color/primary_text_disable_only_material_dark"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/tableLayout2"
-            app:layout_constraintHorizontal_bias="0.662"
+            app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,16 +47,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="32dp"
             android:text="@string/NoMetal"
             android:textColor="@color/primary_text_disable_only_material_dark"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/tableLayout2"
-            app:layout_constraintHorizontal_bias="0.728"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVnombreM" />
 
         <LinearLayout
+            android:id="@+id/linearLayout7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -104,13 +103,12 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <Button
-                android:id="@+id/Bt_peroxido"
+                android:id="@+id/Bt_reto"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/amarillo_celo"
-                android:text="@string/peroxido"
+                android:text="@string/reto"
                 android:textColor="@color/primary_text_disable_only_material_dark"
-                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <Button
@@ -133,11 +131,13 @@
 
             <Button
                 android:id="@+id/btn_barajar"
-                android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
                 android:background="@drawable/zz"
+                android:gravity="clip_horizontal|center"
                 android:text="@string/barajar"
                 android:textColor="@color/primary_text_disable_only_material_dark"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent" />
         </LinearLayout>
@@ -148,12 +148,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
             <ImageButton
                 android:id="@+id/IV_fin1"
@@ -188,7 +187,7 @@
             android:id="@+id/tableLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -377,5 +376,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</FrameLayout>
+</RelativeLayout>

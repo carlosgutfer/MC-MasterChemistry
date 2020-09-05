@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -95,7 +96,20 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terciarios_activity);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels; // ancho absoluto en pixels
+        int height = metrics.heightPixels; // alto absoluto en pixels
+        if (height>1280) {
+            setContentView(R.layout.activity_terciarios_activity);
+        }else{
+            setContentView(R.layout.tablero_terciarios_pequeno);
+        }
+
+
+
+
         reto=findViewById(R.id.Bt_reto);
 
             reto.setOnClickListener(v -> {

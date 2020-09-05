@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,7 +84,16 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tablero_activity);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int width = metrics.widthPixels; // ancho absoluto en pixels
+        int height = metrics.heightPixels; // alto absoluto en pixels
+        if (height>1280) {
+            setContentView(R.layout.tablero_activity);
+        }else{
+            setContentView(R.layout.tablero_pequeno_activity);
+        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -165,7 +175,13 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             Intent();
         }
 
-    private void setelementos(List<ElementoEntity> items) {
+        @Override
+        protected void onSaveInstanceState(Bundle outState) {
+            super.onSaveInstanceState(outState);
+            outState.putIntArray("eleccion",Ids);
+            outState.putIntArray("NumerosOxi",NumerosOxi);
+        }
+        private void setelementos(List<ElementoEntity> items) {
         this.allElementos=items;
         crearBaraja(allElementos);
         repartir(baraja);
