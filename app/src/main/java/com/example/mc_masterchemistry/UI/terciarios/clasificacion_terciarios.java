@@ -2,6 +2,7 @@ package com.example.mc_masterchemistry.UI.terciarios;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mc_masterchemistry.R;
+import com.example.mc_masterchemistry.UI.fin_del_juego;
 import com.example.mc_masterchemistry.commun.Constants;
 import com.example.mc_masterchemistry.commun.SharePreferences;
 
@@ -303,7 +305,6 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
     }
 
     private void juegoFinalizado(){
-        Toast.makeText(this,"¡Felicidades! Has conseguido "+gemas+" gemas.",Toast.LENGTH_LONG).show();
 
         total= SharePreferences.getIntegerValue(Constants.TOTAL_SCORE);
         if(total!=-1){
@@ -315,6 +316,11 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
         mejor=SharePreferences.getIntegerValue(Constants.BEST_SCORE);
         if(mejor<gemas)
             SharePreferences.setIntegerValue(Constants.BEST_SCORE, gemas);
+
+
+        Intent i = new Intent(this, fin_del_juego.class);
+        i.putExtra("GemasGanadas",gemas);
+        startActivity(i);
         finish();
     }
 }

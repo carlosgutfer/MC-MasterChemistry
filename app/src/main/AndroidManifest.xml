@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".UI.TutorialActivity"></activity>
-        <activity android:name=".UI.MejorPuntuacionActivity" />
+        <activity android:name=".UI.fin_del_juego"></activity>
+        <activity android:name=".UI.TutorialActivity" />
+        <activity android:name=".UI.MejorPuntuacion.MejorPuntuacionActivity" />
         <activity android:name=".UI.EleccionBinarioTerciarios" />
         <activity android:name=".UI.terciarios.clasificacion_terciarios" />
         <activity android:name=".UI.terciarios.tablero_terciarios" />

@@ -79,6 +79,9 @@
                                 \n5º Duplicado. el elemento seleccionado se duplica y dispones de uno más a la hora de crear un compuesto.
                                 \n</string>
     <string name="pasoSeptimo">"Por último elige la opción correcta de la lista de tipos de compuestos y dale a comprobar. Perderas una gema por cada error y ganaras una por cada acierto. "</string>
+    <string name="volveraJugar">Volver a jugar</string>
+    <string name="guardar">guardar</string>
+    <string name="Nick">Introduce un nick</string>
 
 
 </resources>
