@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.mc_masterchemistry.ElementoViewModel;
 import com.example.mc_masterchemistry.R;
+import com.example.mc_masterchemistry.UI.fin_del_juego;
 import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
 import com.example.mc_masterchemistry.ui.tablero.TableroFragment;
 
@@ -903,16 +904,21 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             limpiar();
 
         }else{
-            Intent clasificacion = new Intent(this, ActivityClasificacion.class);
-            clasificacion.putStringArrayListExtra("CompuestosCreados", elementosCreados);
-            clasificacion.putExtra("BiTer",BiTer);
-            clasificacion.putExtra("gemasCreadas",gemasFin);
-            clasificacion.putIntegerArrayListExtra("IdsCompuestosCreados",idsCompuestosCreados);
-            clasificacion.putIntegerArrayListExtra("controlPeroxidos",listPeroxidos);
-            clasificacion.putExtra("ids",Ids);
-            clasificacion.putExtra("numeros de Oxidacion", NumerosOxi);
-            startActivity(clasificacion);
-            finish();
+             if(elementosCreados.size()==0){
+                Intent i = new Intent(this, fin_del_juego.class);
+                startActivity(i);
+            }else {
+                 Intent clasificacion = new Intent(this, ActivityClasificacion.class);
+                 clasificacion.putStringArrayListExtra("CompuestosCreados", elementosCreados);
+                 clasificacion.putExtra("BiTer", BiTer);
+                 clasificacion.putExtra("gemasCreadas", gemasFin);
+                 clasificacion.putIntegerArrayListExtra("IdsCompuestosCreados", idsCompuestosCreados);
+                 clasificacion.putIntegerArrayListExtra("controlPeroxidos", listPeroxidos);
+                 clasificacion.putExtra("ids", Ids);
+                 clasificacion.putExtra("numeros de Oxidacion", NumerosOxi);
+                 startActivity(clasificacion);
+                 finish();
+             }
         }
 
     }

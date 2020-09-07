@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.mc_masterchemistry.ElementoViewModel;
 import com.example.mc_masterchemistry.R;
+import com.example.mc_masterchemistry.UI.fin_del_juego;
 import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
 
 import java.util.ArrayList;
@@ -24,7 +25,9 @@ import java.util.List;
 import static android.view.View.VISIBLE;
 
 public class tablero_terciarios extends AppCompatActivity implements dialoge_reto.OnInputListener, View.OnClickListener {
-    private Button limpiar,fusion,barajar,reto;
+    private Button fusion;
+    private Button barajar;
+    private Button reto;
     public ArrayList<ElementoEntity> baraja = new ArrayList<>(64);
 
     private int O=0, H=0;
@@ -49,7 +52,6 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     private int cartasM=0, cartasNM=0;
     private int CBMetal=0, CBNoMetal=0;
     private int suma=0;
-
 
     private boolean control=true;
     private  boolean retoactivo=true;
@@ -157,7 +159,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
         entradaCompuesto=findViewById(R.id.ET_entradaCompuesto);
 
 
-        limpiar = findViewById(R.id.btn_limpiar);
+        Button limpiar = findViewById(R.id.btn_limpiar);
         fusion = findViewById(R.id.btn_fusion);
         barajar = findViewById(R.id.btn_barajar);
 
@@ -350,13 +352,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 fin3.setImageResource(baraja.get(0).getIM1());
             }else {
                 fin1.setImageResource(baraja.get(0).getIM1());
-                añadircalculo(R.id.carta1NO1);
+                annadircalculo(R.id.carta1NO1);
             }
         }
         if(v.getId()==R.id.carta1NO2){
 
                 fin1.setImageResource(baraja.get(0).getIM2());
-                añadircalculo(R.id.carta1NO2);
+                annadircalculo(R.id.carta1NO2);
         }
 
         if(v.getId()==R.id.carta2NO1){
@@ -365,13 +367,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 fin4.setImageResource(baraja.get(1).getIM1());
             }else {
                 fin2.setImageResource(baraja.get(1).getIM1());
-                añadircalculo(R.id.carta2NO1);
+                annadircalculo(R.id.carta2NO1);
             }
         }
         if(v.getId()==R.id.carta2NO2){
 
                 fin2.setImageResource(baraja.get(1).getIM2());
-                añadircalculo(R.id.carta2NO2);}
+                annadircalculo(R.id.carta2NO2);}
 
         if(v.getId()==R.id.carta3NO1){
 
@@ -381,13 +383,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 Oxosales(R.id.carta3NO1);
             }else {
                 fin3.setImageResource(baraja.get(2).getIM1());
-                añadircalculo(R.id.carta3NO1);
+                annadircalculo(R.id.carta3NO1);
             }
         }
         if(v.getId()==R.id.carta3NO2){
 
                 fin3.setImageResource(baraja.get(2).getIM2());
-                añadircalculo(R.id.carta3NO2);
+                annadircalculo(R.id.carta3NO2);
 
         }
 
@@ -399,13 +401,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
             }else {
                 fin4.setImageResource(baraja.get(3).getIM1());
-                añadircalculo(R.id.carta4NO1);
+                annadircalculo(R.id.carta4NO1);
             }
         }
         if(v.getId()==R.id.carta4NO2){
 
                 fin4.setImageResource(baraja.get(3).getIM2());
-                añadircalculo(R.id.carta4NO2);
+                annadircalculo(R.id.carta4NO2);
         }
 
         if(v.getId()==R.id.btn_fusion){
@@ -478,7 +480,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             } else if (azar == 1 & H > 31) {
                 baraja.add(carta.get(17));
                 O++;
-            } else if (azar == 0 & 0 < 32) {
+            } else if (azar == 0 & O < 32) {
                 baraja.add(carta.get(17));
                 O++;
             } else if (azar == 0 & O > 31) {
@@ -599,14 +601,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     }
 
     //Metodos para fusión
-    private void añadircalculo(int id){
+    private void annadircalculo(int id){
 
         if(id==R.id.carta1NO1){
 
             if(calculo.size()<1) {
                 calculo.add(0, baraja.get(0).getNO1());
-            }
-            else if (calculo.size()>=1){
+            } else {
                 calculo.remove(0);
                 calculo.add(0, baraja.get(0).getNO1());
             }
@@ -615,7 +616,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             if(calculo.size()<1){
                 calculo.add(0,baraja.get(0).getNO2());
             }
-            else if (calculo.size()>=1){
+            else {
                 calculo.remove(0);
                 calculo.add(0, baraja.get(0).getNO2());
             }
@@ -627,8 +628,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             }  else if (calculo.size()>=2) {
                 calculo.remove(1);
                 calculo.add(1, baraja.get(1).getNO1());
-            }
-            else if (calculo.size()==1){
+            } else {
                 calculo.add(1,baraja.get(1).getNO1());
             }
 
@@ -640,8 +640,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             }  else if (calculo.size()>=2) {
                 calculo.remove(1);
                 calculo.add(1, baraja.get(1).getNO2());
-            }
-            else if (calculo.size()==1){
+            } else {
                 calculo.add(1,baraja.get(1).getNO2());
             }
         }
@@ -656,8 +655,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             }
             else if (calculo.size()==2){
                 calculo.add(2,baraja.get(2).getNO1());
-            }
-            else if (calculo.size()>=3) {
+            } else {
                 calculo.remove(2);
                 calculo.add(2, baraja.get(2).getNO1());
             }
@@ -674,8 +672,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             }
             else if (calculo.size()==2){
                 calculo.add(2,baraja.get(2).getNO2());
-            }
-            else if (calculo.size()>=3) {
+            } else  {
                 calculo.remove(2);
                 calculo.add(2, baraja.get(2).getNO2());
             }
@@ -880,7 +877,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                                     variablesuma = true;
                                 }
                                 descartar();
-                                JuegoGanado(ListE1NO1, ListE2NO1);
+                                JuegoGanado();
                             } else {
                                 mensaje = combi.getMensaje(mensaje);
                                 Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
@@ -1010,7 +1007,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
         }
 
     }
-    private void JuegoGanado(ArrayList E1, ArrayList E2){
+    private void JuegoGanado(){
 
         if (ListE1NO1.size()==0&ListE2NO1.size()==0){
             Intent clasificacion = new Intent(this, clasificacion_terciarios.class);
@@ -1033,12 +1030,16 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             repartir(baraja);
             limpiar();
         }else{
+            if(elementosCreados.size()==0){
+                Intent i = new Intent(this, fin_del_juego.class);
+                startActivity(i);
+            }else{
             Intent clasificacion = new Intent(this, clasificacion_terciarios.class);
             clasificacion.putStringArrayListExtra("CompuestosCreados", elementosCreados);
             clasificacion.putExtra("gemasCreadas",gemasFin);
             clasificacion.putIntegerArrayListExtra("IdsCompuestosCreados",idsCompuestosCreados);
             startActivity(clasificacion);
-            finish();
+            finish();}
         }
 
     }
@@ -1126,7 +1127,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                     NORep.setImageResource(NumerosOxi[4]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(VISIBLE);
                     NORep2.setImageResource(NumerosOxi[4]);
                     NOsuma = NOsuma + NO;
@@ -1140,7 +1141,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                     NORep.setImageResource(NumerosOxi[5]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(VISIBLE);
                     NORep2.setImageResource(NumerosOxi[5]);
                     NOsuma = NOsuma + NO;
@@ -1154,7 +1155,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                     NORep.setImageResource(NumerosOxi[6]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else {
                     NORep2.setVisibility(VISIBLE);
                     NORep2.setImageResource(NumerosOxi[6]);
                     NOsuma = NOsuma + NO;
@@ -1169,7 +1170,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                     NOsuma = NO;
 
                     gemas++;
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(VISIBLE);
                     NORep2.setImageResource(NumerosOxi[7]);
                     NOsuma = NOsuma + NO;
@@ -1223,7 +1224,7 @@ private void Oxosales(int id){
         if(calculoOxo.size()<1) {
             calculoOxo.add(0, baraja.get(0).getNO1());
         }
-        else if (calculoOxo.size()>=1){
+        else{
             calculoOxo.remove(0);
             calculoOxo.add(0, baraja.get(0).getNO1());
         }
@@ -1254,8 +1255,7 @@ private void Oxosales(int id){
         }
         else if (calculoOxo.size()==2){
             calculoOxo.add(2,baraja.get(2).getNO1());
-        }
-        else if (calculoOxo.size()>=3) {
+        } else  {
             calculoOxo.remove(2);
             calculoOxo.add(2, baraja.get(2).getNO1());
         }
