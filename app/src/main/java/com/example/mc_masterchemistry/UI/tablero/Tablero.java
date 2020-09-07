@@ -341,7 +341,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin1.setImageResource(baraja.get(0).getIM1());
-                añadircalculo(R.id.carta1NO1);
+                annadir(R.id.carta1NO1);
                 ocultarElementos(idElemento,baraja.get(0).getNO1());
 
 
@@ -350,7 +350,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin1.setImageResource(baraja.get(0).getIM2());
-                añadircalculo(R.id.carta1NO2);
+                annadir(R.id.carta1NO2);
                 ocultarElementos(idElemento,baraja.get(0).getNO2());
 
         }
@@ -358,7 +358,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin2.setImageResource(baraja.get(1).getIM1());
-                añadircalculo(R.id.carta2NO1);
+                annadir(R.id.carta2NO1);
                ocultarElementos(idElemento,baraja.get(1).getNO1());
 
         }
@@ -366,7 +366,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin2.setImageResource(baraja.get(1).getIM2());
-                añadircalculo(R.id.carta2NO2);
+                annadir(R.id.carta2NO2);
                 ocultarElementos(idElemento,baraja.get(1).getNO2());
 
         }
@@ -374,7 +374,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin3.setImageResource(baraja.get(2).getIM1());
-                añadircalculo(R.id.carta3NO1);
+                annadir(R.id.carta3NO1);
                 ocultarElementos(idElemento,baraja.get(2).getNO1());
 
         }
@@ -382,7 +382,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin3.setImageResource(baraja.get(2).getIM2());
-                añadircalculo(R.id.carta3NO2);
+                annadir(R.id.carta3NO2);
                 ocultarElementos(idElemento,baraja.get(2).getNO2());
 
 
@@ -393,14 +393,14 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             cartasOuH=combi.sumaHuO(cartasOuH);
 
                 fin4.setImageResource(baraja.get(3).getIM1());
-                añadircalculo(R.id.carta4NO1);
+                annadir(R.id.carta4NO1);
                 ocultarElementos(idElemento,baraja.get(3).getNO1());
 
         }
         if(v.getId()==R.id.carta4NO2){
             cartasOuH=combi.sumaHuO(cartasOuH);
                 fin4.setImageResource(baraja.get(3).getIM2());
-                añadircalculo(R.id.carta4NO2);
+                annadir(R.id.carta4NO2);
                 ocultarElementos(idElemento,baraja.get(3).getNO2());
 
         }
@@ -441,7 +441,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             } else if (azar == 1 & H > 31) {
                 baraja.add(carta.get(17));
                 O++;
-            } else if (azar == 0 & 0 < 32) {
+            } else if (azar == 0 & O < 32) {
                 baraja.add(carta.get(17));
                 O++;
             } else if (azar == 0 & O > 31) {
@@ -590,14 +590,13 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
     }
 
     //Metodos para fusión
-    private void añadircalculo(int id){
+    private void annadir(int id){
 
         if(id==R.id.carta1NO1){
 
             if(calculo.size()<1) {
                 calculo.add(0, baraja.get(0).getNO1());
-            }
-            else if (calculo.size()>=1){
+            } else {
                 calculo.remove(0);
                 calculo.add(0, baraja.get(0).getNO1());
             }
@@ -605,8 +604,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         if(id==R.id.carta1NO2){
             if(calculo.size()<1){
                 calculo.add(0,baraja.get(0).getNO2());
-            }
-            else if (calculo.size()>=1){
+            } else {
                 calculo.remove(0);
                 calculo.add(0, baraja.get(0).getNO2());
             }
@@ -618,8 +616,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }  else if (calculo.size()>=2) {
                 calculo.remove(1);
                 calculo.add(1, baraja.get(1).getNO1());
-            }
-            else if (calculo.size()==1){
+            } else {
                 calculo.add(1,baraja.get(1).getNO1());
             }
 
@@ -631,8 +628,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }  else if (calculo.size()>=2) {
                 calculo.remove(1);
                 calculo.add(1, baraja.get(1).getNO2());
-            }
-            else if (calculo.size()==1){
+            } else {
                 calculo.add(1,baraja.get(1).getNO2());
             }
         }
@@ -647,8 +643,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }
             else if (calculo.size()==2){
                 calculo.add(2,baraja.get(2).getNO1());
-            }
-            else if (calculo.size()>=3) {
+            } else {
                 calculo.remove(2);
                 calculo.add(2, baraja.get(2).getNO1());
             }
@@ -665,8 +660,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }
             else if (calculo.size()==2){
                 calculo.add(2,baraja.get(2).getNO2());
-            }
-            else if (calculo.size()>=3) {
+            } else  {
                 calculo.remove(2);
                 calculo.add(2, baraja.get(2).getNO2());
             }
@@ -752,7 +746,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
                             borrarElementosList(CBMetal, CBNoMetal);
                             IVgemas.setText(" " + gemasFin);
                             descartar();
-                            JuegoGanado(ListE1NO1, ListE2NO1);
+                            JuegoGanado();
                          }else{
                              mensaje=combi.getMensaje(mensaje);
                             Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
@@ -877,7 +871,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
-    private void JuegoGanado(ArrayList E1, ArrayList E2){
+    private void JuegoGanado(){
 
         if (ListE1NO1.size()==0&ListE2NO1.size()==0){
             Intent clasificacion = new Intent(this, ActivityClasificacion.class);
@@ -990,7 +984,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
                     NORep.setImageResource(NumerosOxi[4]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(View.VISIBLE);
                     NORep2.setImageResource(NumerosOxi[4]);
                     NOsuma = NOsuma + NO;
@@ -1004,7 +998,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
                     NORep.setImageResource(NumerosOxi[5]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(View.VISIBLE);
                     NORep2.setImageResource(NumerosOxi[5]);
                     NOsuma = NOsuma + NO;
@@ -1018,7 +1012,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
                     NORep.setImageResource(NumerosOxi[6]);
                     NOsuma = NO;
 
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(View.VISIBLE);
                     NORep2.setImageResource(NumerosOxi[6]);
                     NOsuma = NOsuma + NO;
@@ -1033,7 +1027,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
                     NOsuma = NO;
 
                     gemas++;
-                } else if (NOsuma != 0) {
+                } else  {
                     NORep2.setVisibility(View.VISIBLE);
                     NORep2.setImageResource(NumerosOxi[7]);
                     NOsuma = NOsuma + NO;

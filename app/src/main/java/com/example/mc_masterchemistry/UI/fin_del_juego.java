@@ -36,7 +36,6 @@ public class fin_del_juego extends AppCompatActivity implements View.OnClickList
         db = FirebaseFirestore.getInstance();
         findViewById();
         Intent();
-        nicks=nick.getText().toString();
         onClick();
 
 
@@ -69,6 +68,7 @@ public class fin_del_juego extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int view = v.getId();
+        nicks=nick.getText().toString();
         if(view==R.id.BT_guardar){
             if(nicks.length()>3) {
                 db.collection("users").whereEqualTo("nick", nicks)
@@ -97,7 +97,7 @@ public class fin_del_juego extends AppCompatActivity implements View.OnClickList
                             }
                         });
             }else{
-                nick.setError("El nick tiene que tener al menos 3 caracteres");
+                nick.setError("El nick tiene que tener al menos 4 caracteres");
             }
         }
         if(view==R.id.BT_Salir){
