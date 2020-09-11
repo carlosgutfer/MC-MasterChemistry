@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/Bt_aleatorio"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:background="@drawable/button_border_reglas"
         android:text="@string/aleatorio"
@@ -23,8 +23,8 @@
 
     <Button
         android:id="@+id/Bt_personalizado"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:background="@drawable/button_border_formulacion"
         android:text="@string/personalizado"
