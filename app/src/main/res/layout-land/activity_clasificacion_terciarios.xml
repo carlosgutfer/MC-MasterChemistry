@@ -140,7 +140,7 @@
     <TextView
         android:id="@+id/TV_CompuestosClasificar"
         android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:text="@string/compuesto"
         android:textColor="@color/text_color_primary"
         android:textSize="36sp"

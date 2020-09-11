@@ -11,17 +11,18 @@
         android:id="@+id/Bt_jugar"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
 
         android:background="@drawable/button_border"
         android:onClick="onClick"
         android:text="@string/Jugar"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266" />
 
     <Button
         android:id="@+id/BT_tutorial"
@@ -32,10 +33,12 @@
         android:text="@string/Tutorial"
         android:textColor="@color/primary_text_disable_only_material_dark"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bt_jugar" />
+        app:layout_constraintTop_toBottomOf="@+id/Bt_jugar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/Bt_formulacion"
@@ -47,9 +50,12 @@
         android:text="@string/TDCompuestos"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BT_tutorial" />
+        app:layout_constraintTop_toBottomOf="@+id/BT_tutorial"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/bt_salir"
@@ -62,8 +68,11 @@
         android:text="@string/Records"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bt_formulacion" />
+        app:layout_constraintTop_toBottomOf="@+id/Bt_formulacion"
+        app:layout_constraintVertical_bias="0.01" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

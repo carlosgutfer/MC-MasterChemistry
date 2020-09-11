@@ -8,8 +8,8 @@
     tools:context=".UI.formulacion.ExplicacionCompuestos">
 
     <ScrollView
-        android:layout_width="225dp"
-        android:layout_height="378dp"
+        android:layout_width="213dp"
+        android:layout_height="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

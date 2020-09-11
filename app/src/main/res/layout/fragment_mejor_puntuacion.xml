@@ -28,6 +28,7 @@
         android:layout_margin="@dimen/text_margin"
         android:layout_marginTop="36dp"
         android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/negro"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.068"

@@ -11,6 +11,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-27dp"
         android:background="@drawable/x">
 
 
@@ -57,18 +59,19 @@
             app:layout_constraintTop_toBottomOf="@+id/TVnombreM" />
 
         <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout4"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout4"
             app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
 
             <ImageButton
                 android:id="@+id/IV_NOERep1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
                 android:visibility="invisible"
@@ -76,15 +79,15 @@
 
             <ImageButton
                 android:id="@+id/IV_finNO"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null" />
 
             <ImageButton
                 android:id="@+id/IV_NOERep2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
                 android:visibility="invisible"
@@ -95,8 +98,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -143,51 +146,42 @@
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="408dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout4"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
             <ImageButton
                 android:id="@+id/IV_fin1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null" />
 
             <ImageButton
                 android:id="@+id/IV_fin2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null" />
 
             <ImageButton
                 android:id="@+id/IV_fin3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null" />
 
-            <ImageButton
-                android:id="@+id/IV_fin4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:background="@null" />
         </LinearLayout>
 
         <TableLayout
             android:id="@+id/tableLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -268,6 +262,15 @@
                 android:layout_height="match_parent" />
         </TableLayout>
 
+        <ImageButton
+            android:id="@+id/IV_fin4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            tools:layout_editor_absoluteX="262dp"
+            tools:layout_editor_absoluteY="420dp" />
+
         <TableLayout
             android:id="@+id/tableLayout2"
             android:layout_width="wrap_content"
@@ -335,13 +338,13 @@
             android:id="@+id/IV_gemas"
             android:layout_width="65dp"
             android:layout_height="71dp"
-            android:layout_marginStart="320dp"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/gemas"
             android:foregroundGravity="center"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.876"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

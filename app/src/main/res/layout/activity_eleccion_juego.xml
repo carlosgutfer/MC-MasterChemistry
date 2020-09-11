@@ -11,28 +11,29 @@
         android:id="@+id/Bt_aleatorio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:background="@drawable/button_border_reglas"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/button_border_formulacion"
+        android:padding="10dp"
         android:text="@string/aleatorio"
         android:textColor="@color/negro"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/Bt_personalizado"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/Bt_personalizado"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_personalizado" />
 
     <Button
         android:id="@+id/Bt_personalizado"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/button_border_formulacion"
+        android:layout_marginTop="168dp"
+        android:background="@drawable/button_border_reglas"
+        android:padding="10dp"
         android:text="@string/personalizado"
         android:textColor="@color/text_color_primary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bt_aleatorio" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

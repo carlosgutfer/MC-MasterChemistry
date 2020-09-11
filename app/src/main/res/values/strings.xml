@@ -67,7 +67,7 @@
     <string name="segundoPaso">" Si eliges la opción personalizada, elige un metal  y un no metal de los elementos disponibles en la tabla periódica. Recuerda que podrás además elegir el número de oxidación cuando tengan más de dos.
                                 \nSi te equivocas al seleccionar, pulsa el boton limpiar o si prefieres pulsa a descartar para que vuelvan a salir otros átomos de Oxígeno e Hidrógeno, pero recuerda que el número de estos son limitados"</string>
     <string name="primerPaso"> Elige el modo de juego que más te guste</string>
-    <string name="tercerPaso">" Pulsa en los elementos que desees para crear compuestos electricamente neutros. Escribe su formula en el recuadro de compuestos y pulsa a fusionar. Puedes revisar los compuestos  en el apartado tipos de compuestos del menu principal. "</string>
+    <string name="tercerPaso">" Pulsa en los elementos que desees para crear compuestos electricamente neutros. Escribe su formula en el recuadro de compuestos y pulsa  fusionar. Puedes revisar los compuestos  en el apartado tipos de compuestos del menu principal. "</string>
     <string name="pasoCuarto">Pulsando sobre el átomo veras los compuestos creados para no repetirlos y sobre la gema el número de que llevas creadas.</string>
     <string name="pasoQuinto">Si pulsas el boton peróxidos, elige un metal  y dos oxígenos. Escribe el compuesto y dale a fusionar.</string>
     <string name="pasoSexto">"Cuando seleccionas el boton reto,se mostrará un desafío por pantalla que si es resuelto otorga numerosas gemas. "</string>
