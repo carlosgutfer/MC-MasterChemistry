@@ -17,7 +17,6 @@ public class ElementoRepository {
 
     private ElementoDao Dao;
     private LiveData<List<ElementoEntity>> allElementos;
-    private ElementoEntity elemento;
 
     public ElementoRepository(Application application) {
         ElementoRoomDatabase db = ElementoRoomDatabase.getRoomDataBase(application);
