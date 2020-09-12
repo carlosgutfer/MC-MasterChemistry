@@ -82,6 +82,11 @@
     <string name="volveraJugar">Volver a jugar</string>
     <string name="guardar">guardar</string>
     <string name="Nick">Introduce un nick</string>
+    <string name="NumeroOxiM">Número de oxidación del metal</string>
+    <string name="NumeroOxiNM">Numero oxidación del no metal</string>
+    <string name="ImagenSeleccionImagenMetaloNometal">Imagen numero de oxidación del metal o el no metal</string>
+    <string name="ImagenOxigenoOHidrógeno">Imagen del número de oxidación del Oxígeno o del Hidrógeno</string>
+    <string name="compuestos">Comuestos creados</string>
 
 
 </resources>

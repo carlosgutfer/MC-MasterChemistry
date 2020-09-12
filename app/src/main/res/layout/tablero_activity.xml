@@ -23,8 +23,8 @@
             android:layout_marginLeft="44dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/atomo"
+            android:contentDescription="@string/compuestos"
             android:onClick="onClick"
-            android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +61,7 @@
         <LinearLayout
             android:id="@+id/linearLayout9"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/tableLayout4"
@@ -74,6 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
+                android:contentDescription="@string/ImagenSeleccionImagenMetaloNometal"
                 android:visibility="invisible"
                 app:srcCompat="@drawable/ic_add_circle_black_24dp" />
 
@@ -82,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:contentDescription="@string/ImagenSeleccionImagenMetaloNometal" />
 
             <ImageButton
                 android:id="@+id/IV_NOERep2"
@@ -90,6 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
+                android:contentDescription="@string/ImagenSeleccionImagenMetaloNometal"
                 android:visibility="invisible"
                 app:srcCompat="@drawable/ic_add_circle_black_24dp" />
 
@@ -99,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -145,7 +149,7 @@
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
@@ -157,28 +161,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:contentDescription="@string/ImagenOxigenoOHidrógeno" />
 
             <ImageButton
                 android:id="@+id/IV_fin2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:contentDescription="@string/ImagenOxigenoOHidrógeno" />
 
             <ImageButton
                 android:id="@+id/IV_fin3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:contentDescription="@string/ImagenOxigenoOHidrógeno" />
 
             <ImageButton
                 android:id="@+id/IV_fin4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:contentDescription="@string/ImagenOxigenoOHidrógeno" />
         </LinearLayout>
 
         <TableLayout
@@ -200,6 +208,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -207,6 +216,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -214,6 +224,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -221,6 +232,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
             </TableRow>
 
@@ -233,6 +245,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -240,6 +253,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -247,6 +261,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
 
                 <ImageButton
@@ -254,16 +269,10 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
+                    android:contentDescription="@string/ImagenOxigenoOHidrógeno"
                     app:srcCompat="@drawable/button_border_formulacion" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </TableLayout>
 
         <TableLayout
@@ -286,20 +295,16 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
-                    android:text="Button" />
+                    android:contentDescription="@string/NumeroOxiM" />
 
                 <ImageButton
                     android:id="@+id/btn_E1NO2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
-                    android:text="Button" />
+                    android:contentDescription="@string/NumeroOxiM" />
 
             </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
             <TableRow
                 android:layout_width="160dp"
@@ -310,7 +315,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@null"
-                    android:text="Button" />
+                    android:contentDescription="@string/NumeroOxiNM" />
 
                 <ImageButton
                     android:id="@+id/btn_E2NO2"
@@ -318,15 +323,10 @@
                     android:layout_height="60dp"
                     android:background="@null"
 
-                    android:text="Button" />
+                    android:contentDescription="@string/NumeroOxiNM" />
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
         </TableLayout>
 
         <TextView

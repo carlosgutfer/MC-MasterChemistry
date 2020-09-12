@@ -416,6 +416,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
 
         }
         if(v.getId()==R.id.Bt_peroxido){
+            Toast.makeText(this,"Ahora puede crear peróxidos",Toast.LENGTH_LONG).show();
             peroxidos( baraja);
         }
     }
