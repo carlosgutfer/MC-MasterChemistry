@@ -28,7 +28,6 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
 
 
     private int control;
-    private int total,mejor;
 
     private ArrayList<String> ListCompuestos;
     private ArrayList<Integer> IdsCompuestos;
@@ -59,48 +58,48 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
         eleccion.setOnCheckedChangeListener((eleccion, checkedId) -> {
             if (hidrurosMetalicos.isChecked()) {
                 control=1;
-                getControl(control);
+                setControl(control);
 
             }
             if(hidrurosNoMetalicos.isChecked()){
                 control=2;
-                getControl(control);
+                setControl(control);
 
 
             }
             if (acidosHidracidos.isChecked()) {
                 control=3;
-                getControl(control);
+                setControl(control);
 
             }
             if (Halogenos.isChecked()) {
                 control=4;
-                getControl(control);
+                setControl(control);
             }
             if (OxiNoMetal.isChecked()) {
                 control=5;
-                getControl(control);
+                setControl(control);
             }
             if (OxiMetal.isChecked()) {
                 control=6;
-                getControl(control);
+                setControl(control);
 
             }
             if (salNeutra.isChecked()) {
                 control=7;
-                getControl(control);
+                setControl(control);
             }
             if(oxoacidos.isChecked()){
                 control=8;
-                getControl(control);
+                setControl(control);
             }
             if(hidroxidos.isChecked()){
                 control=9;
-                getControl(control);
+                setControl(control);
             }
             if(oxosales.isChecked()){
                 control=10;
-                getControl(control);
+                setControl(control);
             }
 
         });
@@ -279,21 +278,12 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
                     }
                     break;
                     }
-
-
-
-
             }
 
         }
 
-
-
-
-
-    private int getControl(Integer control){
+    private void setControl(Integer control){
         this.control=control;
-        return  control;
     }
 
     private void eliminar(ArrayList<Integer> compuestos){
@@ -305,16 +295,15 @@ public class clasificacion_terciarios extends AppCompatActivity implements View.
     }
 
     private void juegoFinalizado(){
-
-        total= SharePreferences.getIntegerValue(Constants.TOTAL_SCORE);
-        if(total!=-1){
-            total=total+gemas;}
+        int total = SharePreferences.getIntegerValue(Constants.TOTAL_SCORE);
+        if(total !=-1){
+            total = total +gemas;}
         else{
-            total=gemas;
+            total =gemas;
         }
-        SharePreferences.setIntegerValue(Constants.TOTAL_SCORE,total);
-        mejor=SharePreferences.getIntegerValue(Constants.BEST_SCORE);
-        if(mejor<gemas)
+        SharePreferences.setIntegerValue(Constants.TOTAL_SCORE, total);
+        int mejor = SharePreferences.getIntegerValue(Constants.BEST_SCORE);
+        if(mejor <gemas)
             SharePreferences.setIntegerValue(Constants.BEST_SCORE, gemas);
 
 

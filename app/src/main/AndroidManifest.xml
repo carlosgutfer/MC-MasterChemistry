@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".UI.fin_del_juego"></activity>
+        <activity android:name=".UI.fin_del_juego" />
         <activity android:name=".UI.TutorialActivity" />
         <activity android:name=".UI.MejorPuntuacion.MejorPuntuacionActivity" />
         <activity android:name=".UI.EleccionBinarioTerciarios" />
@@ -26,10 +26,10 @@
         <activity android:name=".UI.tablaPeriodica" />
         <activity android:name=".UI.eleccionJuego" />
         <activity android:name=".UI.formulacion.formulacion" />
-        <activity android:name=".UI.MainActivity">
+        <activity android:name=".UI.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

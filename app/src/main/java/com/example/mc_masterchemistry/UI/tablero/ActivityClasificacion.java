@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +30,8 @@ public class ActivityClasificacion extends AppCompatActivity implements View.OnC
 
     private int control;
     private int BiTer;
-    private int NumerosOxi []= new int [8];
-    private int Ids[]=new int [2];
-    private int total, mejor;
+    private int[] NumerosOxi = new int [8];
+    private int[] Ids =new int [2];
 
 
     private ArrayList<String> ListCompuestos;
@@ -61,56 +59,31 @@ public class ActivityClasificacion extends AppCompatActivity implements View.OnC
         eleccion = findViewById(R.id.RG_elecciones);
 
         btn_comprobar.setOnClickListener(this);
-        eleccion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup eleccion, int checkedId) {
-                if (hidrurosMetalicos.isChecked() ) {
-                    control=1;
-                    getControl(control);
-
-                }
-                if(hidrurosNoMetalicos.isChecked()){
-                    control=2;
-                    getControl(control);
-
-
-                }
-                if (acidosHidracidos.isChecked() ) {
-                    control=3;
-                    getControl(control);
-
-                }
-                if (Halogenos.isChecked() ) {
-                    control=4;
-                    getControl(control);
-                }
-                if (OxiNoMetal.isChecked() ) {
-                    control=5;
-                    getControl(control);
-                }
-                if (OxiMetal.isChecked() ) {
-                    control=6;
-                    getControl(control);
-
-                }
-                if (salNeutra.isChecked() ) {
-                    control=7;
-                    getControl(control);
-                }
-                if(peroxido.isChecked()){
-                    control=8;
-                    getControl(control);
-
-                }
-
-            }
-
+        eleccion.setOnCheckedChangeListener((eleccion, checkedId) ->
+        {
+            if (hidrurosMetalicos.isChecked())
+                this.control=1;
+            else if(hidrurosNoMetalicos.isChecked())
+                this.control=2;
+            else if (acidosHidracidos.isChecked())
+                this.control=3;
+            else if (Halogenos.isChecked())
+                this.control=4;
+            else if (OxiNoMetal.isChecked())
+                this.control=5;
+            else if (OxiMetal.isChecked())
+                this.control=6;
+            else if (salNeutra.isChecked())
+                this.control=7;
+            else if(peroxido.isChecked())
+                this.control=8;
         });
         Intent();
         mostrarElementos(ListCompuestos,gemas);
     }
 
-    private void Intent(){
+    private void Intent()
+    {
         BiTer=getIntent().getIntExtra("BiTer",BiTer);
         gemas=getIntent().getIntExtra("gemasCreadas",gemas);
         ListCompuestos=getIntent().getStringArrayListExtra("CompuestosCreados");
@@ -134,23 +107,17 @@ public class ActivityClasificacion extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.Btn_comprobar){
-            switch (control){
+        if(v.getId()==R.id.Btn_comprobar)
+        {
+            switch(control)
+            {
                 case 1:
-                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)==13&Listperoxidos.get(0)==0){
+                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)==13&Listperoxidos.get(0)==0)
                         gemas++;
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un Hidruro metálico",Toast.LENGTH_LONG).show();
                         gemas--;
                     }
-                    eliminar(IdsCompuestos);
-
-                    if(ListCompuestos.size()==0){
-                    juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
-                    }
-
                     break;
                 case 2:
                     if(IdsCompuestos.get(0)>9&IdsCompuestos.get(0)<13&IdsCompuestos.get(1)==13&Listperoxidos.get(0)==0){
@@ -159,115 +126,69 @@ public class ActivityClasificacion extends AppCompatActivity implements View.OnC
                         Toast.makeText(this," El compuesto no es un Hidruro  no metálico",Toast.LENGTH_LONG).show();
                         gemas--;
                     }
-                    eliminar(IdsCompuestos);
-
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
-                    }
                     break;
                 case 3:
-                    if(IdsCompuestos.get(0)==13&IdsCompuestos.get(1)>13&Listperoxidos.get(0)==0){
+                    if(IdsCompuestos.get(0)==13&IdsCompuestos.get(1)>13&Listperoxidos.get(0)==0)
                         gemas++;
-
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un Ácido hidrácido",Toast.LENGTH_LONG).show();
                         gemas--;
-                    }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
                     }
                     break;
 
                 case 4:
-                    if(IdsCompuestos.get(0)==17&IdsCompuestos.get(1)>17&Listperoxidos.get(0)==0){
+                    if(IdsCompuestos.get(0)==17&IdsCompuestos.get(1)>17&Listperoxidos.get(0)==0)
                         gemas++;
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un Halógeno de oxígeno",Toast.LENGTH_LONG).show();
                         gemas--;
-                    }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
                     }
                     break;
 
                 case 5:
-                    if(IdsCompuestos.get(0)<17&IdsCompuestos.get(0)>9&IdsCompuestos.get(1)==17&Listperoxidos.get(0)==0){
+                    if(IdsCompuestos.get(0)<17&IdsCompuestos.get(0)>9&IdsCompuestos.get(1)==17&Listperoxidos.get(0)==0)
                         gemas++;
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un Óxido de no metal",Toast.LENGTH_LONG).show();
                         gemas--;
                     }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0) {
-                        juegoFinalizado(ListCompuestos);
-                    }else {
-                        mostrarElementos(ListCompuestos, gemas);
-                    }
                     break;
-
                 case 6:
-                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)==17&Listperoxidos.get(0)==0){
+                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)==17&Listperoxidos.get(0)==0)
                         gemas++;
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un  Óxido de  metal",Toast.LENGTH_LONG).show();
                         gemas--;
                     }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
-                    }
                     break;
-
                 case 7:
-                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)>9){
-                    gemas++;
-                }else{
-                    Toast.makeText(this," El compuesto no es una  Sal neutra binaria",Toast.LENGTH_LONG).show();
-                    gemas--;
-                }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
+                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)>9)
+                        gemas++;
+                    else{
+                        Toast.makeText(this," El compuesto no es una  Sal neutra binaria",Toast.LENGTH_LONG).show();
+                        gemas--;
                     }
                     break;
-
                 case 8:
-                    if(IdsCompuestos.get(0)<10&IdsCompuestos.get(1)==17&Listperoxidos.get(0)!=0){
+                    if(IdsCompuestos.get(0) < 10 & IdsCompuestos.get(1) == 17 & Listperoxidos.get(0) != 0)
                         gemas++;
-                    }else{
+                    else{
                         Toast.makeText(this," El compuesto no es un Peróxido",Toast.LENGTH_LONG).show();
                         gemas--;
                     }
-                    eliminar(IdsCompuestos);
-                    if(ListCompuestos.size()==0){
-                        juegoFinalizado(ListCompuestos);}
-                    else {
-                        mostrarElementos(ListCompuestos, gemas);
-                    }
                     break;
             }
-
+            eliminar(IdsCompuestos);
+            comprobarJuegoFinalizado();
         }
-
-
-
     }
 
-    private int getControl(Integer control){
-        this.control=control;
-        return  control;
+    private void comprobarJuegoFinalizado()
+    {
+        if (ListCompuestos.size() == 0)
+            juegoFinalizado();
+        else
+            mostrarElementos(ListCompuestos, gemas);
     }
 
     private void eliminar(ArrayList<Integer> compuestos){
@@ -276,27 +197,24 @@ public class ActivityClasificacion extends AppCompatActivity implements View.OnC
             compuestos.remove(0);
         }
         Listperoxidos.remove(0);
-
     }
 
-    private void juegoFinalizado(ArrayList<String> ListCompuestos){
+    private void juegoFinalizado()
+    {
         if(BiTer!=3){
-
-            total= SharePreferences.getIntegerValue(Constants.TOTAL_SCORE);
-            if(total!=-1){
-            total=total+gemas;}
+            int total = SharePreferences.getIntegerValue(Constants.TOTAL_SCORE);
+            if(total !=-1){
+            total = total +gemas;}
             else{
-                total=gemas;
+                total =gemas;
             }
-            SharePreferences.setIntegerValue(Constants.TOTAL_SCORE,total);
-            mejor=SharePreferences.getIntegerValue(Constants.BEST_SCORE);
-                    if(mejor<gemas)
+            SharePreferences.setIntegerValue(Constants.TOTAL_SCORE, total);
+            int mejor = SharePreferences.getIntegerValue(Constants.BEST_SCORE);
+                    if(mejor <gemas)
                         SharePreferences.setIntegerValue(Constants.BEST_SCORE, gemas);
-
             Intent i = new Intent(this, fin_del_juego.class);
             i.putExtra("GemasGanadas",gemas);
             startActivity(i);
-
             finish();
         } else{
             Intent jugar = new Intent(this, tablero_terciarios.class);

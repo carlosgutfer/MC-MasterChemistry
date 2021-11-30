@@ -1,8 +1,10 @@
 package com.example.mc_masterchemistry.UI.terciarios;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -30,9 +32,10 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     private Button reto;
     public ArrayList<ElementoEntity> baraja = new ArrayList<>(64);
 
-    private int O=0, H=0;
-    private int imagen=0;
-    private int NO1,NO=0,NOm,NOnm,NOsuma=0;
+    private int NO=0;
+    private int NOm;
+    private int NOnm;
+    private int NOsuma=0;
     private int NCborrado=0;
     private ArrayList<Integer> calculo = new ArrayList();
     private ArrayList<Integer> calculoOxo = new ArrayList<>();
@@ -41,11 +44,9 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     private int idElemento=0;
     private int numOxo=0;
     private boolean CombinacionValida=true;
-    private boolean AñadirValido=true;
+    private boolean AnnadirValido=true;
     private boolean minNumero=true;
 
-    private String mensaje;
-    private String StElemento;
     private ArrayList<String> elementosCreados = new ArrayList<>();
     public  ArrayList<Integer>idsCompuestosCreados = new ArrayList<>();
     private int mismoelemento=0;
@@ -60,19 +61,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     public static int  retoH=0, retoH2O=0;
     private int BiTer;
 
-
-
-
-
-
     List<ElementoEntity> allElementos;
-    private ElementoViewModel melementoviewModel;
 
-    private CombinacionQuimiciaTeryBi combi = new CombinacionQuimiciaTeryBi(this);
-    private Retos TipoReto = new Retos(this);
+    private CombinacionQuimiciaTeryBi combi = new CombinacionQuimiciaTeryBi();
+    private Retos TipoReto = new Retos();
 
-    private int NumerosOxi []= new int [8];
-    private int Ids[]=new int [2];
+    private int[] NumerosOxi = new int [8];
+    private int[] Ids =new int [2];
 
     private ArrayList<Integer> ListE1NO1 = new ArrayList<>();
     private ArrayList<Integer> ListE1NO2= new ArrayList<>();
@@ -92,9 +87,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     private TextView listaElementos;
     private EditText entradaCompuesto;
 
-        public tablero_terciarios(){
 
-        }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +116,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
             });
 
 
-        melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
+        ElementoViewModel melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
         melementoviewModel.getAllElementos().observe(this, allEllementos -> setelementos(allEllementos));
 
         elementos=findViewById(R.id.Btn_elementosCreados);
@@ -210,7 +203,8 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
         }
 
-        if(v.getId()==R.id.btn_E1NO1){
+        if(v.getId()==R.id.btn_E1NO1)
+        {
             if(TipoReto.numeroTipo==4&retoactivo){
                 retoduplicar();
                 if(ListE2NO1.size()>0){
@@ -230,7 +224,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 if(calculo.size()>0){
                     for (int x=0; x<calculo.size();x++) {
                         if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
+                            ocultarElementos(idElemento);
                         }
                     }
                 }
@@ -264,7 +258,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 if(calculo.size()>0){
                     for (int x=0; x<calculo.size();x++) {
                         if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
+                            ocultarElementos(idElemento);
                         }
                     }
                 }
@@ -298,7 +292,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 if(calculo.size()>0){
                     for (int x=0; x<calculo.size();x++) {
                         if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
+                            ocultarElementos(idElemento);
                         }
                     }
                 }
@@ -331,7 +325,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                 if(calculo.size()>0){
                     for (int x=0; x<calculo.size();x++) {
                         if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
+                            ocultarElementos(idElemento);
                         }
                     }
                 }
@@ -423,7 +417,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
     }
 
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putIntArray("eleccion",Ids);
         outState.putIntArray("NumerosOxi",NumerosOxi);
@@ -462,7 +456,8 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
     //Metodos control grafico
     private void crearBaraja(List<ElementoEntity> carta){
-        H=0; O=0;
+        int h = 0;
+        int o = 0;
         Ids=getIntent().getIntArrayExtra("ids");
         NombreMetal.setText(allElementos.get(Ids[0]).getNombre());
         NombreNometal.setText(allElementos.get(Ids[1]).getNombre());
@@ -474,23 +469,23 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
         for (int fila=0;fila<65;fila++) {
             int azar = (int) Math.floor(Math.random() * 2);
-            if (azar == 1 & H < 32) {
+            if (azar == 1 & h < 32) {
                 baraja.add(carta.get(13));
-                H++;
-            } else if (azar == 1 & H > 31) {
+                h++;
+            } else if (azar == 1 & h > 31) {
                 baraja.add(carta.get(17));
-                O++;
-            } else if (azar == 0 & O < 32) {
+                o++;
+            } else if (azar == 0 & o < 32) {
                 baraja.add(carta.get(17));
-                O++;
-            } else if (azar == 0 & O > 31) {
+                o++;
+            } else if (azar == 0 & o > 31) {
                 baraja.add(carta.get(13));
-                H++;
+                h++;
             }
         }
     }
     private void repartir(ArrayList<ElementoEntity> baraja) {
-        imagen=0;
+        int imagen = 0;
         if (ListE1NO1.size()==0|ListE1NO2.size()==0){
             E1NO1.setVisibility(View.INVISIBLE);
             E1NO2.setVisibility(View.INVISIBLE);
@@ -501,52 +496,52 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
         }
         for (int x =0; x <4; x++) {
 
-            NO1 = baraja.get(x).getNO1();
+            int NO1 = baraja.get(x).getNO1();
 
 
-            if(NO1==-1&imagen==0){
+            if(NO1 ==-1& imagen ==0){
                 C1NO1.setImageResource(baraja.get(x).getIM1());
                 C1NO2.setImageResource(baraja.get(x).getIM2());
 
             }
 
-            else  if(NO1==-1&&imagen==1){
+            else  if(NO1 ==-1&& imagen ==1){
                 C2NO1.setImageResource(baraja.get(x).getIM1());
                 C2NO2.setImageResource(baraja.get(x).getIM2());
 
             }
 
-            else  if(NO1==-1&&imagen==2){
+            else  if(NO1 ==-1&& imagen ==2){
                 C3NO1.setImageResource(baraja.get(x).getIM1());
                 C3NO2.setImageResource(baraja.get(x).getIM2());
 
             }
 
-            else if(NO1==-1&&imagen==3){
+            else if(NO1 ==-1&& imagen ==3){
                 C4NO1.setImageResource(baraja.get(x).getIM1());
                 C4NO2.setImageResource(baraja.get(x).getIM2());
 
             }
 
-            if(NO1==-2&imagen==0){
+            if(NO1 ==-2& imagen ==0){
                 C1NO1.setImageResource(baraja.get(x).getIM1());
                 C1NO2.setVisibility(View.INVISIBLE);
 
             }
 
-            else  if(NO1==-2&&imagen==1){
+            else  if(NO1 ==-2&& imagen ==1){
                 C2NO1.setImageResource(baraja.get(x).getIM1());
                 C2NO2.setVisibility(View.INVISIBLE);
 
             }
 
-            else  if(NO1==-2&&imagen==2){
+            else  if(NO1 ==-2&& imagen ==2){
                 C3NO1.setImageResource(baraja.get(x).getIM1());
                 C3NO2.setVisibility(View.INVISIBLE);
 
             }
 
-            else if(NO1==-2&&imagen==3){
+            else if(NO1 ==-2&& imagen ==3){
                 C4NO1.setImageResource(baraja.get(x).getIM1());
                 C4NO2.setVisibility(View.INVISIBLE);
 
@@ -575,7 +570,8 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
         E2NO2.setImageResource(NumerosOxi[7]);
 
     }
-    private void ocultarElementos(int IdElemento,int NO) {
+    @SuppressLint("NonConstantResourceId")
+    private void ocultarElementos(int IdElemento) {
         switch (IdElemento) {
             case R.id.btn_E1NO1:
                 E1NO2.setVisibility(View.INVISIBLE);
@@ -729,6 +725,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     }
     private void fusion(){
         String compuesto = entradaCompuesto.getText().toString();
+        String mensaje;
         if (TipoReto.numeroTipo==3|TipoReto.numeroTipo==1){
                 if (TipoReto.numeroTipo==3){
                     if(compuesto.contains("Au")) {
@@ -779,7 +776,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                                 }
                             }
                              }else {
-                                    mensaje = combi.getMensaje(mensaje);
+                                    mensaje = combi.getMensaje();
                                     Toast.makeText(this, mensaje,Toast.LENGTH_LONG).show();
                             }
 
@@ -855,8 +852,8 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                         }
                         if (minNumero) {
 
-                            AñadirValido = combi.comprobarElementoList(StElemento, allElementos, elementosCreados, idm, idNm, idH, idO, cartasM, cartasNM, calculo, compuesto, idsCompuestosCreados, numOxo);
-                            if (AñadirValido) {
+                            AnnadirValido = combi.comprobarElementoList(allElementos, elementosCreados, idm, idNm, idH, idO, cartasM, cartasNM, calculo, compuesto, idsCompuestosCreados, numOxo);
+                            if (AnnadirValido) {
                                 if (TipoReto.numeroTipo == 2) {
                                     if (TipoReto.retotodos(calculo)) {
                                         gemas++;
@@ -865,8 +862,8 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                                     }
                                 }
                                 gemasFin = gemasFin + gemas;
-                                combi.getList(elementosCreados);
-                                combi.getIds(idsCompuestosCreados);
+                                elementosCreados = combi.getList();
+                                idsCompuestosCreados = combi.getIds();
                                 listaElementos.setText(mostrarElementos());
                                 RetoSustituir(idsCompuestosCreados);
                                 borrarElementosList(CBMetal, CBNoMetal);
@@ -879,13 +876,13 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
                                 descartar();
                                 JuegoGanado();
                             } else {
-                                mensaje = combi.getMensaje(mensaje);
+                                mensaje = combi.getMensaje();
                                 Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
                                 limpiar();
                             }
 
                         } else {
-                            mensaje = combi.getMensaje(mensaje);
+                            mensaje = combi.getMensaje();
                             Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
                             limpiar();
                         }
@@ -897,7 +894,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
 
                     }
                 } else {
-                    mensaje = combi.getMensaje(mensaje);
+                    mensaje = combi.getMensaje();
                     Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
                     gemas = 0;
                     limpiar();
@@ -1101,7 +1098,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
         idH=0;
         idO=0;
         CombinacionValida=true;
-        AñadirValido=true;
+        AnnadirValido=true;
         mismoelemento = 0;
         cartasM=0;
         cartasNM=0;
@@ -1117,6 +1114,7 @@ public class tablero_terciarios extends AppCompatActivity implements dialoge_ret
     }
 
     // Metodos sumaMismo elemento
+    @SuppressLint("NonConstantResourceId")
     private void mismoElemento(int id) {
         mismoelemento++;
         switch (id) {
@@ -1324,13 +1322,13 @@ private void sumaOxo(ArrayList<Integer> calculoOxo){
         if(idsCreadas.size()>=3) {
             for (int i = 0; i < idsCreadas.size(); i = i + 3) {
                 if (idsCreadas.get(i) == 13&idsCreadas.get(i+1)>9&idsCreadas.get(i+2)==-1 ) {
-                    this.retoH=1;
+                    retoH=1;
                 }
                 if(idsCreadas.get(i)>=9&idsCreadas.get(i)<17&idsCreadas.get(i+1)==17&idsCreadas.get(i+2)==-1){
-                    this.retoH2O=2;
+                    retoH2O=2;
                 }
                 if(idsCreadas.get(i)==17&idsCreadas.get(i+1)>17&idsCreadas.get(i+2)==-1){
-                    this.retoH2O=2;
+                    retoH2O=2;
                 }
             }
         }

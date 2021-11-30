@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        salir=findViewById(R.id.bt_salir);
-        formulacion=findViewById(R.id.bt_salir);
-        jugar=findViewById(R.id.Bt_jugar);
-        tutorial=findViewById(R.id.BT_tutorial);
+        salir = findViewById(R.id.bt_salir);
+        formulacion = findViewById(R.id.bt_salir);
+        jugar = findViewById(R.id.Bt_jugar);
+        tutorial = findViewById(R.id.BT_tutorial);
 
         salir.setOnClickListener(this);
         formulacion.setOnClickListener(this);

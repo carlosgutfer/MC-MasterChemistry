@@ -19,22 +19,19 @@ import java.util.List;
 
 public class eleccionJuego extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn_aleatorio, btn_personalizado;
     List<ElementoEntity> allElementos;
-    private ElementoViewModel melementoviewModel;
-    private int ids[]=new int[2];
-    private   int NumerosOxi []= new int [8];
-    private ElementoEntity ElementoM,ElementoNM;
+    private final int[] ids =new int[2];
+    private final int[] NumerosOxi = new int [8];
     private int control;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
-        melementoviewModel.getAllElementos().observe(this, allEllementos -> setelementos(allEllementos));
+        ElementoViewModel melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
+        melementoviewModel.getAllElementos().observe(this, this::setelementos);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_juego);
-        btn_aleatorio=findViewById(R.id.Bt_aleatorio);
-        btn_personalizado=findViewById(R.id.Bt_personalizado);
+        Button btn_aleatorio = findViewById(R.id.Bt_aleatorio);
+        Button btn_personalizado = findViewById(R.id.Bt_personalizado);
 
         btn_aleatorio.setOnClickListener(this);
         btn_personalizado.setOnClickListener(this);
@@ -48,99 +45,88 @@ public class eleccionJuego extends AppCompatActivity implements View.OnClickList
 
         if (v.getId()==R.id.Bt_aleatorio){
             control=getIntent().getIntExtra("valor",control);
-           if(control==1) {
-                sorteo();
-                Intent jugar = new Intent(this, tablero_terciarios.class);
-                jugar.putExtra("numeros de Oxidacion", NumerosOxi);
-                jugar.putExtra("ids", ids);
-                jugar.putExtra("BiTer",control);
-                startActivity(jugar);
-                finish();
-            }else if(control==2){
-               sorteo();
-               Intent jugar = new Intent(this, Tablero.class);
-               jugar.putExtra("numeros de Oxidacion", NumerosOxi);
-               jugar.putExtra("ids", ids);
-               jugar.putExtra("BiTer",control);
-               startActivity(jugar);
-               finish();
-           }else if(control==3){
-               sorteo();
-               Intent jugar = new Intent(this, Tablero.class);
-               jugar.putExtra("numeros de Oxidacion", NumerosOxi);
-               jugar.putExtra("ids", ids);
-               jugar.putExtra("BiTer",control);
-               startActivity(jugar);
-               finish();
-           }
-
+           if(control==1)
+               comenzarJuegoAleatorio(false);
+           else if(control==2)
+               comenzarJuegoAleatorio(true);
+           else if(control==3)
+               comenzarJuegoAleatorio(true);
         }
-        if (v.getId()==R.id.Bt_personalizado){
+        if (v.getId()==R.id.Bt_personalizado)
+        {
             control=getIntent().getIntExtra("valor",control);
             Intent personalizado = new Intent(this, tablaPeriodica.class);
             personalizado.putExtra("valor",control);
             startActivity(personalizado);
             finish();
-
         }
-
     }
+
+    private void comenzarJuegoAleatorio(boolean tablero)
+    {
+        sorteo();
+        Intent jugar;
+        if(tablero)
+            jugar = new Intent(this, Tablero.class);
+        else
+            jugar = new Intent(this, tablero_terciarios.class);
+        jugar.putExtra("numeros de Oxidacion", NumerosOxi);
+        jugar.putExtra("ids", ids);
+        jugar.putExtra("BiTer",control);
+        startActivity(jugar);
+        finish();
+    }
+
     private void setelementos(List<ElementoEntity> items) {
         this.allElementos = items;
     }
 
-    private void sorteo(){
+    private void sorteo()
+    {
         int azar= (int) Math.floor(Math.random() * 10);
-        ElementoM=allElementos.get(azar);
-        ids[0]=ElementoM.getId();
-        NumerosOxi[0]=ElementoM.getNO1();
-        NumerosOxi[1]=ElementoM.getNO2();
-        NumerosOxi[4]=ElementoM.getIM1();
-        NumerosOxi[5]=ElementoM.getIM2();
-
+        ElementoEntity elementoM = allElementos.get(azar);
+        ids[0]= elementoM.getId();
+        NumerosOxi[0]= elementoM.getNO1();
+        NumerosOxi[1]= elementoM.getNO2();
+        NumerosOxi[4]= elementoM.getIM1();
+        NumerosOxi[5]= elementoM.getIM2();
         azar = (int) Math.floor(Math.random() * (22 - 10) + 10);
-            if (azar==17|azar==13){
+            if (azar==17|azar==13)
                 azar=15;
-            }
-        ElementoNM=allElementos.get(azar);
-        ids[1]=ElementoNM.getId();
-        NumerosOxi[2]=ElementoNM.getNO1();
-        NumerosOxi[6]=ElementoNM.getIM1();
-
+        ElementoEntity elementoNM = allElementos.get(azar);
+        ids[1]= elementoNM.getId();
+        NumerosOxi[2]= elementoNM.getNO1();
+        NumerosOxi[6]= elementoNM.getIM1();
         if(azar==10|azar==11|azar==14|azar==15){
             azar = (int) Math.floor(Math.random() * 2);
 
             switch (azar) {
                 case 0:
-                    NumerosOxi[3] = ElementoNM.getNO2();
-                    NumerosOxi[7] = ElementoNM.getIM2();
+                    NumerosOxi[3] = elementoNM.getNO2();
+                    NumerosOxi[7] = elementoNM.getIM2();
                     break;
                 case 1:
-                    NumerosOxi[3] = ElementoNM.getNO3();
-                    NumerosOxi[7] = ElementoNM.getIM3();
+                    NumerosOxi[3] = elementoNM.getNO3();
+                    NumerosOxi[7] = elementoNM.getIM3();
                     break;
-
             }
         }else {
-
             azar = (int) Math.floor(Math.random() * 3);
-
-                switch (azar) {
+                switch (azar)
+                {
                     case 0:
-                        NumerosOxi[3] = ElementoNM.getNO2();
-                        NumerosOxi[7] = ElementoNM.getIM2();
+                        NumerosOxi[3] = elementoNM.getNO2();
+                        NumerosOxi[7] = elementoNM.getIM2();
                         break;
                     case 1:
-                        NumerosOxi[3] = ElementoNM.getNO3();
-                        NumerosOxi[7] = ElementoNM.getIM3();
+                        NumerosOxi[3] = elementoNM.getNO3();
+                        NumerosOxi[7] = elementoNM.getIM3();
                         break;
                     case 2:
-                        NumerosOxi[3] = ElementoNM.getNO4();
-                        NumerosOxi[7] = ElementoNM.getIM4();
+                        NumerosOxi[3] = elementoNM.getNO4();
+                        NumerosOxi[7] = elementoNM.getIM4();
                         break;
                 }
-
-
         }
     }
 

@@ -9,37 +9,24 @@ import androidx.room.PrimaryKey;
 public class InorganicaEntity {
     @PrimaryKey
     @NonNull
-    private String nombre;
-    private Integer URL_Imagen_nombre;
-    private String datos;
+    private final String nombre;
+    private final Integer URL_Imagen_nombre;
+    private final String datos;
 
-    public InorganicaEntity(String nombre, Integer URL_Imagen_nombre, String datos) {
+    public InorganicaEntity(@NonNull String nombre, Integer URL_Imagen_nombre, String datos) {
         this.nombre = nombre;
         this.URL_Imagen_nombre = URL_Imagen_nombre;
         this.datos=datos;
     }
 
+    @NonNull
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Integer getURL_Imagen_nombre() {
         return URL_Imagen_nombre;
     }
-
-    public void setURL_Imagen_nombre(Integer URL_Imagen_nombre) {
-        this.URL_Imagen_nombre = URL_Imagen_nombre;
-    }
-
     public String getDatos() {
         return datos;
-    }
-
-    public void setDatos(String datos) {
-        this.datos = datos;
     }
 }

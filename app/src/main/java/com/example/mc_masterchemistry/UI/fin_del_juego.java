@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 
 public class fin_del_juego extends AppCompatActivity implements View.OnClickListener {
     private EditText nick;
@@ -73,28 +72,21 @@ public class fin_del_juego extends AppCompatActivity implements View.OnClickList
             if(nicks.length()>3) {
                 db.collection("users").whereEqualTo("nick", nicks)
                         .get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                if (queryDocumentSnapshots.size() > 0) {
-                                    nick.setError("El nick no esta disponible");
-                                } else {
-                                    Users nuevoUsuario = new Users(nicks, gemasGanadas);
-                                    db.collection("users")
-                                            .add(nuevoUsuario)
-                                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                @Override
-                                                public void onSuccess(DocumentReference documentReference) {
-                                                    Toast.makeText(fin_del_juego.this, "Se ha guardado correctamente", Toast.LENGTH_SHORT).show();
-                                                    Intent i = new Intent(fin_del_juego.this, EleccionBinarioTerciarios.class);
-                                                    startActivity(i);
-                                                    finish();
-
-                                                }
-                                            });
-                                }
-
+                        .addOnSuccessListener(queryDocumentSnapshots -> {
+                            if (queryDocumentSnapshots.size() > 0) {
+                                nick.setError("El nick no esta disponible");
+                            } else {
+                                Users nuevoUsuario = new Users(nicks, gemasGanadas);
+                                db.collection("users")
+                                        .add(nuevoUsuario)
+                                        .addOnSuccessListener(documentReference -> {
+                                            Toast.makeText(fin_del_juego.this, "Se ha guardado correctamente", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(fin_del_juego.this, EleccionBinarioTerciarios.class);
+                                            startActivity(i);
+                                            finish();
+                                        });
                             }
+
                         });
             }else{
                 nick.setError("El nick tiene que tener al menos 4 caracteres");

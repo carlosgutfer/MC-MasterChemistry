@@ -11,14 +11,14 @@ import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
 import java.util.List;
 
 
-public class ElementoViewModel extends AndroidViewModel {
-    private ElementoRepository mRepository;
-    private LiveData<List<ElementoEntity>> allElementos;
+public class ElementoViewModel extends AndroidViewModel
+{
+    private final LiveData<List<ElementoEntity>> allElementos;
 
     public ElementoViewModel( @NonNull Application application) {
         super(application);
-        mRepository = new ElementoRepository(application);
-        allElementos=mRepository.getAll();
+        ElementoRepository mRepository = new ElementoRepository(application);
+        allElementos= mRepository.getAll();
     }
 
     public LiveData<List<ElementoEntity>> getAllElementos(){

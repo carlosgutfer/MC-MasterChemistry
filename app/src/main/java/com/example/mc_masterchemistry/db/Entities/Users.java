@@ -1,6 +1,6 @@
 package com.example.mc_masterchemistry.db.Entities;
 
-import android.content.Intent;
+
 
 public class Users {
     private String nick;

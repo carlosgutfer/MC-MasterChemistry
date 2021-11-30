@@ -2,20 +2,14 @@ package com.example.mc_masterchemistry.UI.tablero;
 
 
 import android.content.Context;
-import android.widget.Toast;
-
-
-import com.example.mc_masterchemistry.ElementoViewModel;
-
 import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CombinacionQuimica {
     private String mensaje;
-    public CombinacionQuimica(Context ctx){
+    public CombinacionQuimica(){
 
     }
     private String elemento;
@@ -26,14 +20,10 @@ public class CombinacionQuimica {
 
     public boolean combinacionesMetal(boolean posible , int idM,int idNm, int idHuO,ArrayList<Integer> calculo){
 
-
-
-        if (idM<10){
+        if (idM<10)
+        {
             posible=true;
         }
-
-
-
         for (int i=0; i<calculo.size();i++) {
             if (calculo.get(i)==-1){
             if (idNm > 13&idHuO!=0 ) {
@@ -204,11 +194,13 @@ public class CombinacionQuimica {
         return HuO;
     }
 
-    public boolean comprobarElementoList(String elemento,List<ElementoEntity>allelementos,ArrayList<String> elementos,int idM,int idNm, int idHuO,int M, int NM, int HuO,String compuesto,ArrayList<Integer>idsCompuestos){
+    public boolean comprobarElementoList(List<ElementoEntity>allelementos,ArrayList<String> elementos,int idM,int idNm, int idHuO,int M, int NM, int HuO,String compuesto,ArrayList<Integer>idsCompuestos){
         boolean valido=true;
-        elemento=ElementoList(allelementos,elementos,idM,idNm,idHuO,M,NM,HuO);
+        String elemento;
 
-   if (compuesto.equals(elemento)) {
+        elemento = ElementoList(allelementos,elementos,idM,idNm,idHuO,M,NM,HuO);
+   if (compuesto.equals(elemento))
+   {
        for (int i = 0; i < elementos.size(); i++) {
            if (elementos.get(i).equals(elemento)) {
                valido = false;

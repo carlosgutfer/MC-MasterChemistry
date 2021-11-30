@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.CR.mc_masterchemistry"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 20
+        targetSdkVersion 31
         versionCode 9
         versionName "1.0.8"
         vectorDrawables.useSupportLibrary = true
@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.firebase:firebase-firestore:17.1.2'
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

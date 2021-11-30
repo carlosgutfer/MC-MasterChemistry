@@ -71,7 +71,7 @@ public abstract class ElementoRoomDatabase extends RoomDatabase {
     };
 
 
-    private static RoomDatabase.Callback llamada = new RoomDatabase.Callback() {
+    private static final RoomDatabase.Callback llamada = new RoomDatabase.Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
 

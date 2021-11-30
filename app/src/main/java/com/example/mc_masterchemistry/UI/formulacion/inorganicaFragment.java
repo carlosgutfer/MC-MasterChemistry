@@ -3,11 +3,9 @@ package com.example.mc_masterchemistry.UI.formulacion;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -27,15 +25,10 @@ import java.util.List;
 
 public class inorganicaFragment extends Fragment {
 
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-    MyinorganicaRecyclerViewAdapter adapterFormulacion;
+
+    private MyinorganicaRecyclerViewAdapter adapterFormulacion;
     private OnListFragmentInteractionListener mListener;
-
-    List<InorganicaEntity> inorganicaEntityList;
-    private tiposViewModel melementoviewModel;
-
-
+    private List<InorganicaEntity> inorganicaEntityList;
 
     public inorganicaFragment() {
     }
@@ -54,29 +47,23 @@ public class inorganicaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inorganica_list, container, false);
 
         // Set the adapter
-        if (view instanceof RecyclerView) {
+        if (view instanceof RecyclerView)
+        {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                DisplayMetrics displayMetrics =context.getResources().getDisplayMetrics();
-                float dpWith = displayMetrics.widthPixels/displayMetrics.density;
-                int numeroColumnas= (int)(dpWith/180);
-                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(numeroColumnas,StaggeredGridLayoutManager.VERTICAL));
-            }
-
-
+            DisplayMetrics displayMetrics =context.getResources().getDisplayMetrics();
+            float dpWith = displayMetrics.widthPixels/displayMetrics.density;
+            int numeroColumnas= (int)(dpWith/450);
+            if(numeroColumnas < 1)
+                numeroColumnas = 1;
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(numeroColumnas,StaggeredGridLayoutManager.VERTICAL));
             inorganicaEntityList = new ArrayList<>();
-            melementoviewModel = new ViewModelProvider(this).get(tiposViewModel.class);
-            melementoviewModel.getAllElementos().observe(getViewLifecycleOwner(), new Observer<List<InorganicaEntity>>() {
-                @Override
-                public void onChanged(@Nullable List<InorganicaEntity> allInorganica){
-                    setelementos(allInorganica);
-                    adapterFormulacion = new MyinorganicaRecyclerViewAdapter(getActivity(), inorganicaEntityList,mListener);
-                    recyclerView.setAdapter(adapterFormulacion);
-                }
-            });
+                tiposViewModel melementoviewModel = new ViewModelProvider(this).get(tiposViewModel.class);
+            melementoviewModel.getAllElementos().observe(getViewLifecycleOwner(), allInorganica -> {
+                setelementos(allInorganica);
+                adapterFormulacion = new MyinorganicaRecyclerViewAdapter(getActivity(), inorganicaEntityList);
+                recyclerView.setAdapter(adapterFormulacion);
+        });
 
         }
         return view;
@@ -85,7 +72,7 @@ public class inorganicaFragment extends Fragment {
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
@@ -106,7 +93,5 @@ public class inorganicaFragment extends Fragment {
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(InorganicaEntity item);
     }
 }

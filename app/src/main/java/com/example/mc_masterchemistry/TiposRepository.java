@@ -10,15 +10,14 @@ import com.example.mc_masterchemistry.db.TiposRoomDatabase;
 
 import java.util.List;
 
-public class TiposRepository {
-    private InorganicaDao Dao;
-    private LiveData<List<InorganicaEntity>> allElementos;
-
+public class TiposRepository
+{
+    private final LiveData<List<InorganicaEntity>> allElementos;
 
     public TiposRepository(Application application) {
-       TiposRoomDatabase db = TiposRoomDatabase.getRoomDataBase(application);
-        Dao=db.DAO();
-        allElementos=Dao.getallInorganica();
+        TiposRoomDatabase db = TiposRoomDatabase.getRoomDataBase(application);
+        InorganicaDao dao = db.DAO();
+        allElementos= dao.getallInorganica();
     }
 
     public LiveData<List<InorganicaEntity>> getAll(){

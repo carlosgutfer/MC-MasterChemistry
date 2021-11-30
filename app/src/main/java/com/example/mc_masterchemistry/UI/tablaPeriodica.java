@@ -1,8 +1,7 @@
 package com.example.mc_masterchemistry.UI;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 
@@ -37,24 +36,18 @@ public class tablaPeriodica extends AppCompatActivity implements View.OnClickLis
     private TextView metal, Nometal;
     private ImageButton eleccion1, eleccion2, eleccion3, eleccion4;
 
-    private ElementoViewModel melementoviewModel;
-    List<ElementoEntity> allElementos;
+    private List<ElementoEntity> allElementos;
 
-    private int ids[]=new int[2];
-    private int NumerosOxi []= new int [8];
-    private int idm , idNm;
+    private int[] ids =new int[2];
+    private int[] NumerosOxi = new int [8];
     int control;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_periodica);
-
-        melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
-        melementoviewModel.getAllElementos().observe(this, allEllementos -> setelementos(allEllementos));
-
-
-
+        ElementoViewModel melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
+        melementoviewModel.getAllElementos().observe(this, this::setelementos);
 
         jugar=findViewById(R.id.btn_jugar);
         metal = findViewById(R.id.TV_metal);
@@ -135,7 +128,7 @@ public class tablaPeriodica extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putIntArray("eleccion",ids);
         outState.putIntArray("NumerosOxi",NumerosOxi);
@@ -209,6 +202,7 @@ public class tablaPeriodica extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
 
         //Metales
+        int idm;
         if (v.getId() == R.id.bt_Fe) {
 
             idm = allElementos.get(0).getId();
@@ -216,7 +210,7 @@ public class tablaPeriodica extends AppCompatActivity implements View.OnClickLis
 
         }
         if (v.getId() == R.id.bt_Co) {
-            idm=allElementos.get(1).getId();
+            idm =allElementos.get(1).getId();
             DatosElemento(idm);
         }
         if (v.getId() == R.id.bt_Ni) {
@@ -262,49 +256,50 @@ public class tablaPeriodica extends AppCompatActivity implements View.OnClickLis
 
         //NOmetales
 
+        int idNm;
         if (v.getId() == R.id.bt_Sb) {
-            idNm=allElementos.get(10).getId();
+            idNm =allElementos.get(10).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_As) {
-            idNm=allElementos.get(11).getId();
+            idNm =allElementos.get(11).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_P) {
 
-            idNm=allElementos.get(12).getId();
+            idNm =allElementos.get(12).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_Te) {
 
-            idNm=allElementos.get(14).getId();
+            idNm =allElementos.get(14).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_Se) {
 
-            idNm=allElementos.get(15).getId();
+            idNm =allElementos.get(15).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_S) {
-            idNm=allElementos.get(16).getId();
+            idNm =allElementos.get(16).getId();
             DatosElemento(idNm);
         }
 
         if (v.getId() == R.id.bt_At) {
-            idNm=allElementos.get(18).getId();
+            idNm =allElementos.get(18).getId();
             DatosElemento(idNm);
         }
 
         if (v.getId() == R.id.bt_I) {
-            idNm=allElementos.get(19).getId();
+            idNm =allElementos.get(19).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_Br) {
-            idNm=allElementos.get(20).getId();
+            idNm =allElementos.get(20).getId();
             DatosElemento(idNm);
         }
         if (v.getId() == R.id.bt_Cl) {
-            idNm=allElementos.get(21).getId();
+            idNm =allElementos.get(21).getId();
             DatosElemento(idNm);
         }
 

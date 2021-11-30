@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 
 import com.example.mc_masterchemistry.R;
-import com.example.mc_masterchemistry.db.Entities.InorganicaEntity;
 
 
 public class formulacion extends AppCompatActivity implements inorganicaFragment.OnListFragmentInteractionListener {
@@ -19,11 +18,6 @@ public class formulacion extends AppCompatActivity implements inorganicaFragment
         setContentView(R.layout.activity_formulacion);
 
 
-
-    }
-
-    @Override
-    public void onListFragmentInteraction(InorganicaEntity item) {
 
     }
 

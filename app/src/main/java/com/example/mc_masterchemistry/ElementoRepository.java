@@ -1,8 +1,6 @@
 package com.example.mc_masterchemistry;
 
-import android.app.Activity;
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -15,20 +13,15 @@ import java.util.List;
 
 public class ElementoRepository {
 
-    private ElementoDao Dao;
-    private LiveData<List<ElementoEntity>> allElementos;
+    private final LiveData<List<ElementoEntity>> allElementos;
 
     public ElementoRepository(Application application) {
         ElementoRoomDatabase db = ElementoRoomDatabase.getRoomDataBase(application);
-        Dao=db.DAO();
-        allElementos=Dao.getAllElementos();
-
+        ElementoDao dao = db.DAO();
+        allElementos= dao.getAllElementos();
         }
-
-
-
-        public LiveData<List<ElementoEntity>> getAll(){
-            return  allElementos;}
+    public LiveData<List<ElementoEntity>> getAll(){
+        return  allElementos;}
 
 
 

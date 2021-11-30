@@ -1,6 +1,5 @@
 package com.example.mc_masterchemistry.UI.terciarios;
 
-import android.content.Context;
 
 
 import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class CombinacionQuimiciaTeryBi {
     private String mensaje;
-    public CombinacionQuimiciaTeryBi(Context ctx){
+    public CombinacionQuimiciaTeryBi(){
 
     }
     private String elemento;
@@ -20,9 +19,6 @@ public class CombinacionQuimiciaTeryBi {
     private int numH, numO;
 
     public boolean combinacionesPosibles(boolean posible , int idM,int idNm, int idH, int idO,ArrayList<Integer> calculo){
-
-
-
         if (idM<10&idNm<10&idO==17&idH==13){
             int O=0;  int H=0;
             for (int i=0;i<calculo.size();i++){
@@ -54,16 +50,14 @@ public class CombinacionQuimiciaTeryBi {
                 if(calculo.get(i)==1){
                     posible=false;
                     this.mensaje= "El NO del hidrógeno debe ser negativo con elementos de los grupos 14 y 15";
-
                 }
             }
         }
-        if(idNm>9&idO==17&idH==13){
+        if(idNm > 9 & idO == 17 & idH == 13){
             for(int i=0;i<calculo.size();i++){
                 if(calculo.get(i)==-1){
                     posible=false;
                     this.mensaje= "¡Casi! Recuerda que cuando crees un oxoácido usar el hidrogeno positivo";
-
                 }
             }
 
@@ -72,9 +66,9 @@ public class CombinacionQuimiciaTeryBi {
         return posible;
     }
 
-    public String getMensaje(String error){
-        error=mensaje;
-        return  error;
+    public String getMensaje()
+    {
+        return  mensaje;
     }
 
 
@@ -226,7 +220,7 @@ public class CombinacionQuimiciaTeryBi {
                 }
 
             }
-            else if (idNm > 9 & idNm < 17 & idO == 17&idH!=13&idM>9) {
+            else if (idNm > 9 & idNm < 17 & idO == 17 & idH!=13 & idM > 9) {
                 this.id1=idNm;
                 this.id2=idO;
                 this.id3=-1;
@@ -306,22 +300,23 @@ public class CombinacionQuimiciaTeryBi {
 
     }
 
-    public boolean comprobarElementoList(String elemento,List<ElementoEntity>allelementos,ArrayList<String> elementos,int idM,int idNm, int idH,int idO,int M, int NM, ArrayList<Integer> calculo,String compuesto,ArrayList<Integer>idsCompuestos,int numOxo){
+    public boolean comprobarElementoList(List<ElementoEntity> allelementos, ArrayList<String> elementos, int idM, int idNm, int idH, int idO, int M, int NM, ArrayList<Integer> calculo, String compuesto, ArrayList<Integer> idsCompuestos, int numOxo){
         boolean valido=true;
-        elemento=ElementoList(allelementos,idM,idNm,idH,idO,M,NM,calculo,numOxo);
+        String elemento = ElementoList(allelementos, idM, idNm, idH, idO, M, NM, calculo, numOxo);
 
-        if (compuesto.equals(elemento)) {
-            for (int i = 0; i < elementos.size(); i++) {
+        if (compuesto.equals(elemento))
+        {
+            for (int i = 0; i < elementos.size(); i++)
+            {
                 if (elementos.get(i).equals(elemento)) {
                     valido = false;
 
                     this.mensaje = "El compuesto " + elemento + " ya ha sido creado.";
                     break;
-                } else {
-                    valido = true;
                 }
             }
-            if (valido) {
+            if (valido)
+            {
                 elementos.add(elemento);
                 idsCompuestos.add(id1);
                 idsCompuestos.add(id2);
@@ -336,13 +331,11 @@ public class CombinacionQuimiciaTeryBi {
         return  valido;
     }
 
-    public ArrayList<String> getList(ArrayList<String> elementos){
-        elementos=listaElementos;
-        return elementos;
+    public ArrayList<String> getList(){
+        return listaElementos;
     }
-    public ArrayList<Integer> getIds(ArrayList<Integer> ids){
-        ids=compuestosids;
-        return ids;
+    public ArrayList<Integer> getIds(){
+        return compuestosids;
     }
 
     public boolean minElementos(ArrayList<Integer> calculo, int No, int suma){
@@ -352,7 +345,7 @@ public class CombinacionQuimiciaTeryBi {
             if (No == suma) {
                 for (int x = 0; x < calculo.size(); x++) {
                     for (int y = x + 1; y < calculo.size(); y++) {
-                        if (calculo.get(x) == calculo.get(y) & calculo.get(x) != 0) {
+                        if (calculo.get(x).equals(calculo.get(y)) & calculo.get(x) != 0) {
                             if (calculo.get(x) == -No) {
                                 min=false;
                                 this.mensaje="¡Casi!Recuerda crear los compuestos con el menor número de elementos posibles";

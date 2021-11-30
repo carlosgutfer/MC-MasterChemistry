@@ -25,9 +25,7 @@ public class dialoge_reto extends DialogFragment {
 
     public static TextView  mActionCancel;
 
-    private String retoSt;
-    private Retos retotipo = new Retos(getActivity());
-    private ArrayList<Integer> ids;
+    private Retos retotipo = new Retos();
 
 
     @Nullable
@@ -35,7 +33,7 @@ public class dialoge_reto extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialoge_reto, container, false);
         mActionCancel = view.findViewById(R.id.Informacion);
-        mActionCancel.setText(retotipo.TipoReto(retoSt));
+        mActionCancel.setText(retotipo.TipoReto());
 
         return view;
     }

@@ -1,5 +1,6 @@
 package com.example.mc_masterchemistry.UI.tablero;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -20,31 +21,30 @@ import com.example.mc_masterchemistry.ElementoViewModel;
 import com.example.mc_masterchemistry.R;
 import com.example.mc_masterchemistry.UI.fin_del_juego;
 import com.example.mc_masterchemistry.db.Entities.ElementoEntity;
-import com.example.mc_masterchemistry.ui.tablero.TableroFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero extends AppCompatActivity implements View.OnClickListener {
 
-    private Button limpiar,fusion,barajar,peroxido;
     public ArrayList<ElementoEntity> baraja = new ArrayList<>(64);
     private int BiTer;
 
-    private int O=0, H=0;
     private int imagen=0;
-    private int NO1,NO=0,NOm,NOnm,NOsuma=0;
+    private int NO=0;
+    private int NOm;
+    private int NOnm;
+    private int NOsuma=0;
     private int NCborrado=0;
-    private ArrayList<Integer> calculo = new ArrayList();
+    private ArrayList<Integer> calculo = new ArrayList<>();
     private int gemas=0, gemasFin=0;
     private int  idm=10, idNm=0, idHuO=0;
     private int idElemento=0;
     private boolean CombinacionValida=true;
-    private boolean AñadirValido=true;
+    private boolean AnnadirValido =true;
     private boolean minNumero=true;
 
     private String mensaje;
-    private String StElemento;
     private ArrayList<String> elementosCreados = new ArrayList<>();
     private ArrayList<Integer>idsCompuestosCreados = new ArrayList<>();
     private ArrayList<Integer>listPeroxidos=new ArrayList<>();
@@ -54,14 +54,13 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
     private int suma=0;
     private int conperoxido=0;
 
-    List<ElementoEntity> allElementos;
-    private ElementoViewModel melementoviewModel;
+    private List<ElementoEntity> allElementos;
 
-    private CombinacionQuimica combi = new CombinacionQuimica(this);
+    private CombinacionQuimica combi = new CombinacionQuimica();
 
 
-    private int NumerosOxi []= new int [8];
-    private int Ids[]=new int [2];
+    private int [] NumerosOxi = new int [8];
+    private int [] Ids=new int [2];
 
     private ArrayList<Integer> ListE1NO1 = new ArrayList<>();
     private ArrayList<Integer> ListE1NO2= new ArrayList<>();
@@ -95,14 +94,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         }else{
             setContentView(R.layout.tablero_activity);
         }
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, TableroFragment.newInstance())
-                    .commitNow();
-        }
-
-        melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
+        ElementoViewModel melementoviewModel = new ViewModelProvider(this).get(ElementoViewModel.class);
         melementoviewModel.getAllElementos().observe(this, new Observer<List<ElementoEntity>>() {
             @Override
             public void onChanged(@Nullable List<ElementoEntity> allEllementos) {
@@ -142,10 +134,10 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         IVgemas = findViewById(R.id.IV_gemas);
         entradaCompuesto=findViewById(R.id.ET_entradaCompuesto);
 
-        peroxido=findViewById(R.id.Bt_peroxido);
-        limpiar = findViewById(R.id.btn_limpiar);
-        fusion = findViewById(R.id.btn_fusion);
-        barajar = findViewById(R.id.btn_barajar);
+        Button peroxido = findViewById(R.id.Bt_peroxido);
+        Button limpiar = findViewById(R.id.btn_limpiar);
+        Button fusion = findViewById(R.id.btn_fusion);
+        Button barajar = findViewById(R.id.btn_barajar);
 
 
         E1NO1.setOnClickListener(this);
@@ -177,7 +169,8 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         }
 
         @Override
-        protected void onSaveInstanceState(Bundle outState) {
+        protected void onSaveInstanceState(@NonNull Bundle outState)
+        {
             super.onSaveInstanceState(outState);
             outState.putIntArray("eleccion",Ids);
             outState.putIntArray("NumerosOxi",NumerosOxi);
@@ -190,9 +183,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             outState.putInt("gemasCreadas",gemasFin);
             outState.putIntegerArrayList("IdsCompuestosCreados",idsCompuestosCreados);
             outState.putIntegerArrayList("controlPeroxidos",listPeroxidos);
-
         }
-
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
@@ -218,7 +209,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         listaElementos.setText(mostrarElementos());
     }
 
-        private void setelementos(List<ElementoEntity> items) {
+    private void setelementos(List<ElementoEntity> items) {
         this.allElementos=items;
         crearBaraja(allElementos);
         repartir(baraja);
@@ -226,61 +217,44 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
 
     public void onClick(View v) {
 
-
-        if(v.getId()==R.id.Btn_elementosCreados){
-
-            if(listaElementos.getVisibility()==View.INVISIBLE){
+        //al pulsar la imagen de átomo muestro la lista de elemenots ya creados o la escondo
+        if(v.getId()==R.id.Btn_elementosCreados)
+        {
+            if(listaElementos.getVisibility()==View.INVISIBLE)
                 listaElementos.setVisibility(View.VISIBLE);
-            }else{
+            else
                 listaElementos.setVisibility(View.INVISIBLE);
-            }
-
         }
-
-        if(v.getId()==R.id.btn_E1NO1){
-            CBMetal++;
-            idm=Ids[0];
-           cartasM= combi.sumaMetal(cartasM);
-            if (NO==0) {
+        if(v.getId()==R.id.btn_E1NO1) {
+            eleccionMetal();
+            if (NO==0) // si el NO == 0 quiere decir que aun no se ha seleccionado ningún elemento
+            {
                 finNO.setImageResource(NumerosOxi[4]);
                 NO = ListE1NO1.get(0);
                 E1NO2.setVisibility(View.INVISIBLE);
                 idElemento=R.id.btn_E1NO1;
-                if(calculo.size()>0){
-                    for (int x=0; x<calculo.size();x++) {
-                        if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
-                        }
-                    }
-                }
+                if(calculo.size() > 0)
+                    ocultarElementos();
                 mismoelemento++;
-            } else if (calculo.size()<ListE1NO1.size()&ListE1NO1.get(0)!=NO){
+            } else if (calculo.size() < ListE1NO1.size() & ListE1NO1.get(0) != NO) // Cuando se ha elegido un elemento ya y al elegir el siguiente este es distinto que el ya seleccionado quiere decir que será un metal con un no metal
+            {
                 NOm = ListE1NO1.get(0);
-                 metalNometal(NOm, R.id.btn_E1NO1);
-             }else if(ListE1NO1.get(0)==NO&mismoelemento<ListE1NO1.size()){
+                metalNometal(NOm, R.id.btn_E1NO1);
+             }else if(ListE1NO1.get(0) == NO & mismoelemento < ListE1NO1.size()){ // Cuando el elemento eleigo es igual al NO y el número de elementos elegidos es menos que el total de elemenots.
                 mismoElemento(idElemento);
             }
-
          }
-        if(v.getId()==R.id.btn_E1NO2){
-            CBMetal++;
-            cartasM=combi.sumaMetal(cartasM);
-            idm=Ids[0];
+        if(v.getId() == R.id.btn_E1NO2){
+            eleccionMetal();
             if (NO==0) {
                     finNO.setImageResource(NumerosOxi[5]);
                     NO = ListE1NO2.get(0);
                     E1NO1.setVisibility(View.INVISIBLE);
                     idElemento=R.id.btn_E1NO2;
-                if(calculo.size()>0){
-                    for (int x=0; x<calculo.size();x++) {
-                        if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
-                        }
-                    }
-                }
+                if(calculo.size()>0)
+                    ocultarElementos();
                 mismoelemento++;
             }else if (calculo.size()<ListE1NO2.size()&ListE1NO2.get(0)!=NO ){
-
                 NOm=ListE1NO2.get(0);
                 metalNometal(NOm,R.id.btn_E1NO2 );
             } else if(ListE1NO2.get(0)==NO&mismoelemento<ListE1NO1.size()){
@@ -289,21 +263,14 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }
         }
         if(v.getId()==R.id.btn_E2NO1){
-            CBNoMetal++;
-            cartasNM=combi.sumaNoMetal(cartasNM);
-            idNm=Ids[1];
-         if(NO==0) {
+            eleccionNoMetal();
+            if(NO == 0) {
                  finNO.setImageResource(NumerosOxi[6]);
                  NO = ListE2NO1.get(0);
                  E2NO2.setVisibility(View.INVISIBLE);
                  idElemento=R.id.btn_E2NO1;
-             if(calculo.size()>0){
-                 for (int x=0; x<calculo.size();x++) {
-                     if (calculo.get(x)!=0) {
-                         ocultarElementos(idElemento, calculo.get(x));
-                     }
-                 }
-             }
+             if(calculo.size() > 0)
+                 ocultarElementos();
              mismoelemento++;
          }else if (calculo.size()<ListE2NO1.size()&ListE2NO1.get(0)!=NO ){
              NOnm=ListE2NO1.get(0);
@@ -313,118 +280,119 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
          }
         }
         if(v.getId()==R.id.btn_E2NO2){
-            CBNoMetal++;
-            cartasNM=combi.sumaNoMetal(cartasNM);
-            idNm=Ids[1];
+            eleccionNoMetal();
             if(NO==0) {
                     finNO.setImageResource(NumerosOxi[7]);
                     NO = ListE2NO2.get(0);
                     E2NO1.setVisibility(View.INVISIBLE);
                     idElemento=R.id.btn_E2NO2;
-                if(calculo.size()>0){
-                    for (int x=0; x<calculo.size();x++) {
-                        if (calculo.get(x)!=0) {
-                            ocultarElementos(idElemento, calculo.get(x));
-                        }
-                    }
-                }
+                if(calculo.size() > 0)
+                    ocultarElementos();
                 mismoelemento++;
-            }else if (calculo.size()<ListE2NO2.size()&ListE2NO2.get(0)!=NO){
+            }else if (calculo.size() < ListE2NO2.size() & ListE2NO2.get(0) != NO)
+            {
                 NOnm=ListE2NO2.get(0);
                 metalNometal(NOnm,R.id.btn_E2NO2 );
             }else if(ListE2NO2.get(0)==NO&mismoelemento<ListE2NO1.size()){
                 mismoElemento(idElemento);
             }
         }
-
-        if(v.getId()==R.id.carta1NO1){
-            cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin1.setImageResource(baraja.get(0).getIM1());
-                annadir(R.id.carta1NO1);
-                ocultarElementos(idElemento,baraja.get(0).getNO1());
-
-
+        if(v.getId()==R.id.carta1NO1)
+        {
+            cartasOuH = combi.sumaHuO(cartasOuH);
+            fin1.setImageResource(baraja.get(0).getIM1());
+            annadir(R.id.carta1NO1);
+            ocultarElementos(idElemento,baraja.get(0).getNO1());
         }
-        if(v.getId()==R.id.carta1NO2){
-            cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin1.setImageResource(baraja.get(0).getIM2());
-                annadir(R.id.carta1NO2);
-                ocultarElementos(idElemento,baraja.get(0).getNO2());
-
+        if(v.getId()==R.id.carta1NO2)
+        {
+            cartasOuH = combi.sumaHuO(cartasOuH);
+            fin1.setImageResource(baraja.get(0).getIM2());
+            annadir(R.id.carta1NO2);
+            ocultarElementos(idElemento,baraja.get(0).getNO2());
         }
-        if(v.getId()==R.id.carta2NO1){
-            cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin2.setImageResource(baraja.get(1).getIM1());
-                annadir(R.id.carta2NO1);
-               ocultarElementos(idElemento,baraja.get(1).getNO1());
-
+        if(v.getId()==R.id.carta2NO1)
+        {
+            cartasOuH = combi.sumaHuO(cartasOuH);
+            fin2.setImageResource(baraja.get(1).getIM1());
+            annadir(R.id.carta2NO1);
+            ocultarElementos(idElemento,baraja.get(1).getNO1());
         }
-        if(v.getId()==R.id.carta2NO2){
+        if(v.getId()==R.id.carta2NO2)
+        {
             cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin2.setImageResource(baraja.get(1).getIM2());
-                annadir(R.id.carta2NO2);
-                ocultarElementos(idElemento,baraja.get(1).getNO2());
-
+            fin2.setImageResource(baraja.get(1).getIM2());
+            annadir(R.id.carta2NO2);
+            ocultarElementos(idElemento,baraja.get(1).getNO2());
         }
-        if(v.getId()==R.id.carta3NO1){
+        if(v.getId()==R.id.carta3NO1)
+        {
             cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin3.setImageResource(baraja.get(2).getIM1());
-                annadir(R.id.carta3NO1);
-                ocultarElementos(idElemento,baraja.get(2).getNO1());
-
+            fin3.setImageResource(baraja.get(2).getIM1());
+            annadir(R.id.carta3NO1);
+            ocultarElementos(idElemento,baraja.get(2).getNO1());
         }
-        if(v.getId()==R.id.carta3NO2){
+        if(v.getId()==R.id.carta3NO2)
+        {
             cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin3.setImageResource(baraja.get(2).getIM2());
-                annadir(R.id.carta3NO2);
-                ocultarElementos(idElemento,baraja.get(2).getNO2());
-
-
-
-
+            fin3.setImageResource(baraja.get(2).getIM2());
+            annadir(R.id.carta3NO2);
+            ocultarElementos(idElemento,baraja.get(2).getNO2());
         }
         if(v.getId()==R.id.carta4NO1){
             cartasOuH=combi.sumaHuO(cartasOuH);
-
-                fin4.setImageResource(baraja.get(3).getIM1());
-                annadir(R.id.carta4NO1);
-                ocultarElementos(idElemento,baraja.get(3).getNO1());
-
+            fin4.setImageResource(baraja.get(3).getIM1());
+            annadir(R.id.carta4NO1);
+            ocultarElementos(idElemento,baraja.get(3).getNO1());
         }
-        if(v.getId()==R.id.carta4NO2){
+        if(v.getId()==R.id.carta4NO2)
+        {
             cartasOuH=combi.sumaHuO(cartasOuH);
-                fin4.setImageResource(baraja.get(3).getIM2());
-                annadir(R.id.carta4NO2);
-                ocultarElementos(idElemento,baraja.get(3).getNO2());
-
+            fin4.setImageResource(baraja.get(3).getIM2());
+            annadir(R.id.carta4NO2);
+            ocultarElementos(idElemento,baraja.get(3).getNO2());
         }
-
-        if(v.getId()==R.id.btn_fusion){
+        if(v.getId()==R.id.btn_fusion)
             fusion();
-        }
-        if(v.getId()==R.id.btn_barajar){
+        if(v.getId()==R.id.btn_barajar)
             descartar();
-            }
-        if (v.getId()==R.id.btn_limpiar){
+        if (v.getId()==R.id.btn_limpiar)
             limpiar();
-
-        }
         if(v.getId()==R.id.Bt_peroxido){
             Toast.makeText(this,"Ahora puede crear peróxidos",Toast.LENGTH_LONG).show();
-            peroxidos( baraja);
+            peroxidos(baraja);
         }
+    }
+
+    // Este método comprueba cuantas veces se ha seleccionado la carta, si es igual al número máximo que hay la oculta
+    private void ocultarElementos() {
+        for (int x = 0; x < calculo.size(); x++) {
+            if (calculo.get(x) != 0) {
+                ocultarElementos(idElemento, calculo.get(x));
+            }
+        }
+    }
+
+    //Este método se usa cuando se pulsa sobre un noMetal
+    private void eleccionNoMetal() {
+        CBNoMetal++;
+        cartasNM = combi.sumaNoMetal(cartasNM);
+        idNm = Ids[1];
+    }
+
+    //Este método se llama cada vez que se pulsa sobre un elemento metálico
+    private void eleccionMetal()
+    {
+        CBMetal++;
+        idm=Ids[0];
+        cartasM= combi.sumaMetal(cartasM);
     }
 
 
     //Metodos control grafico
     private void crearBaraja(List<ElementoEntity> carta){
-        H=0; O=0;
+        int h = 0;
+        int o = 0;
         Ids=getIntent().getIntArrayExtra("ids");
         NombreMetal.setText(allElementos.get(Ids[0]).getNombre());
         NombreNometal.setText(allElementos.get(Ids[1]).getNombre());
@@ -436,18 +404,18 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
 
         for (int fila=0;fila<65;fila++) {
             int azar = (int) Math.floor(Math.random() * 2);
-            if (azar == 1 & H < 32) {
+            if (azar == 1 & h < 32) {
                 baraja.add(carta.get(13));
-                H++;
-            } else if (azar == 1 & H > 31) {
+                h++;
+            } else if (azar == 1 & h > 31) {
                 baraja.add(carta.get(17));
-                O++;
-            } else if (azar == 0 & O < 32) {
+                o++;
+            } else if (azar == 0 & o < 32) {
                 baraja.add(carta.get(17));
-                O++;
-            } else if (azar == 0 & O > 31) {
+                o++;
+            } else if (azar == 0 & o > 31) {
                 baraja.add(carta.get(13));
-                H++;
+                h++;
             }
         }
     }
@@ -462,56 +430,38 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             E2NO2.setVisibility(View.INVISIBLE);
         }
         for (int x =0; x <4; x++) {
-
-            NO1 = baraja.get(x).getNO1();
-
-
-            if(NO1==-1&imagen==0){
+            int NO1 = baraja.get(x).getNO1();
+            if(NO1 ==-1&imagen==0){
                 C1NO1.setImageResource(baraja.get(x).getIM1());
                 C1NO2.setImageResource(baraja.get(x).getIM2());
-
             }
-
-            else  if(NO1==-1&&imagen==1){
+            else  if(NO1 ==-1&&imagen==1){
                 C2NO1.setImageResource(baraja.get(x).getIM1());
                 C2NO2.setImageResource(baraja.get(x).getIM2());
-
             }
-
-            else  if(NO1==-1&&imagen==2){
+            else  if(NO1 ==-1&&imagen==2){
                 C3NO1.setImageResource(baraja.get(x).getIM1());
                 C3NO2.setImageResource(baraja.get(x).getIM2());
-
             }
-
-            else if(NO1==-1&&imagen==3){
+            else if(NO1 ==-1&&imagen==3){
                 C4NO1.setImageResource(baraja.get(x).getIM1());
                 C4NO2.setImageResource(baraja.get(x).getIM2());
-
             }
-
-            if(NO1==-2&imagen==0){
+            if(NO1 ==-2&imagen==0){
                 C1NO1.setImageResource(baraja.get(x).getIM1());
                 C1NO2.setVisibility(View.INVISIBLE);
-
             }
-
-            else  if(NO1==-2&&imagen==1){
+            else  if(NO1 ==-2&&imagen==1){
                 C2NO1.setImageResource(baraja.get(x).getIM1());
                 C2NO2.setVisibility(View.INVISIBLE);
-
             }
-
-            else  if(NO1==-2&&imagen==2){
+            else  if(NO1 ==-2&&imagen==2){
                 C3NO1.setImageResource(baraja.get(x).getIM1());
                 C3NO2.setVisibility(View.INVISIBLE);
-
             }
-
-            else if(NO1==-2&&imagen==3){
+            else if(NO1 ==-2&&imagen==3){
                 C4NO1.setImageResource(baraja.get(x).getIM1());
                 C4NO2.setVisibility(View.INVISIBLE);
-
             }
             imagen++;
         }
@@ -716,6 +666,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
+
     private void fusion(){
       for(int i =0; i<calculo.size();i++){
           if (calculo.get(i)!=0) {
@@ -725,33 +676,37 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
       }
         suma=suma+NO+NOsuma;
         gemas++;
-        if(NOsuma!=0){
+        if(NOsuma!=0)
+        {
             gemas++;
         }
         CombinacionValida=combi.combinacionesMetal(CombinacionValida,idm,idNm,idHuO,calculo);
-        if (CombinacionValida){
+        if (CombinacionValida)
+        {
             if (suma == 0 ) {
                 if(NOsuma-NO==NO) {
                     minNumero = combi.minElementos(calculo, NO, NO); }
                 if (NOsuma-NO==0){
                     minNumero = combi.minElementos(calculo, NO, NOsuma); }
-                if(minNumero){
+                if(minNumero)
+                {
                 String compuesto = entradaCompuesto.getText().toString();
-                AñadirValido=combi.comprobarElementoList(StElemento,allElementos,elementosCreados,idm,idNm,idHuO,cartasM,cartasNM,cartasOuH,compuesto,idsCompuestosCreados);
-                if(AñadirValido){
-                            gemasFin = gemasFin + gemas;
-                            setListPeroxidos(listPeroxidos);
-                            combi.getList(elementosCreados);
-                            combi.getIds(idsCompuestosCreados);
-                            listaElementos.setText(mostrarElementos());
-                            borrarElementosList(CBMetal, CBNoMetal);
-                            IVgemas.setText(" " + gemasFin);
-                            descartar();
-                            JuegoGanado();
-                         }else{
-                             mensaje=combi.getMensaje(mensaje);
-                            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
-                            limpiar();
+                AnnadirValido =combi.comprobarElementoList(allElementos,elementosCreados,idm,idNm,idHuO,cartasM,cartasNM,cartasOuH,compuesto,idsCompuestosCreados);
+                if(AnnadirValido)
+                {
+                    gemasFin = gemasFin + gemas;
+                    setListPeroxidos(listPeroxidos);
+                    combi.getList(elementosCreados);
+                    combi.getIds(idsCompuestosCreados);
+                    listaElementos.setText(mostrarElementos());
+                    borrarElementosList();
+                    IVgemas.setText(" " + gemasFin);
+                    descartar();
+                    JuegoGanado();
+                }else{
+                     mensaje=combi.getMensaje(mensaje);
+                    Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
+                    limpiar();
                     }
 
             }else{
@@ -860,20 +815,18 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
     }
 
     //Metodos de control de juego
-    private void borrarElementosList(int BRMetal, int BRNM){
-
-        for (int i=0;i<BRMetal;i++){
+    private void borrarElementosList()
+    {
+        for (int i=0; i < CBMetal; ++i){
             ListE1NO1.remove(0);
             ListE1NO2.remove(0);
         }
-        for(int x=0;x<BRNM;x++){
+        for(int x=0;x < CBNoMetal; ++x){
             ListE2NO1.remove(0);
             ListE2NO2.remove(0);
         }
-
     }
     private void JuegoGanado(){
-
         if (ListE1NO1.size()==0&ListE2NO1.size()==0){
             Intent clasificacion = new Intent(this, ActivityClasificacion.class);
             clasificacion.putExtra("BiTer",BiTer);
@@ -886,8 +839,6 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
             startActivity(clasificacion);
             finish();
         }
-
-
     }
     private void descartar() {
 
@@ -960,7 +911,7 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
         idNm=0;
         idHuO=0;
         CombinacionValida=true;
-        AñadirValido=true;
+        AnnadirValido =true;
         mismoelemento = 0;
         cartasM=0;
         cartasOuH=0;
@@ -977,8 +928,8 @@ public class Tablero extends AppCompatActivity implements View.OnClickListener {
     // Metodos sumaMismo elemento
     private void mismoElemento(int id) {
          mismoelemento++;
-        switch (id) {
-
+        switch (id)
+        {
             case R.id.btn_E1NO1:
                 if (NOsuma == 0) {
                     NORep.setVisibility(View.VISIBLE);
